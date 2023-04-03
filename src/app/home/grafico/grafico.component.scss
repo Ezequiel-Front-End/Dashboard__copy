@@ -1,0 +1,21 @@
+.canvas__container{
+    height: 200px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.titulo__grafico{
+    margin-top: 2rem;
+    width: 100%;
+    text-align: left;
+
+    p{
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+

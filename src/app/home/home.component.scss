@@ -1,0 +1,24 @@
+.campo__pesquisa{
+    background:  transparent;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #8686862f;
+
+    .bx{
+        font-size: 22px;
+    }
+
+    input{
+        width: 100%;
+        padding: 0.5625rem;
+        border: none;
+        outline: none;
+        background: transparent;
+
+        &::placeholder{
+            color: rgb(160, 160, 160);
+        }
+    }
+}

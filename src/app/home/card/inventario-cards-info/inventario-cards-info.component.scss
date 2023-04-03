@@ -1,0 +1,192 @@
+.Cards__container {
+    margin-top: 0.5624rem;
+    border-top: 3px solid #BC0D15;
+    height: auto;
+    width: auto;
+    background: #fff;
+    box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
+    padding: 5px;
+    padding-right: 0.80rem;
+
+    .card__row {
+    margin-bottom: 5px;
+    height: auto;
+    width: auto;
+    display: grid;
+    grid-gap:6px;
+    align-items: center;
+    justify-items:center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+
+
+    .card__user__cliente {
+    min-height: 70px;
+    width: 13.70rem;
+    background: #01AE1D;
+    margin-left: 0.50rem;
+    display: flex;
+    position: relative;
+    
+    .info{
+    margin-left: 5px;   
+    padding-top: 5px;
+    position: relative;
+
+    span{
+    color: #fff;
+    font-size: 13px;
+    position: relative
+
+    }
+    p{
+    position: relative;
+    margin-top: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    }
+    
+}
+
+           
+
+    .card__icon__user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+    width: 4rem;
+    background: #008A16;
+
+    i {
+    font-size: 30px;
+    color: #fff;
+    }
+    }
+}
+
+
+
+
+
+    .card__doc {
+    position: relative;
+    min-height: 70px;
+    width: 13.70rem;
+    background: #56037D;
+    display: flex;
+    margin-left: 0.50rem;
+
+            
+    .info{
+    margin-left: 5px;   
+    padding-top: 5px;
+
+    span{
+    color: #fff;
+    font-size: 13px;
+    }
+
+    p{
+    margin-top: 3px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    }
+    
+}
+
+    .card__icon__doc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    width: 4rem;
+    background: #670098;
+
+    i {
+        font-size: 30px;
+        color: #fff;
+    }
+}
+}
+
+
+
+    .card__cifrao {
+    position: relative;
+    min-height: 70px;
+    width: 13.70rem;
+    background: #AB0202;
+    display: flex;
+    margin-left: 0.50rem;
+
+
+    .info{
+    margin-left: 5px;   
+    padding-top: 5px;
+
+    span{
+    color: #fff;
+    font-size: 13px;
+}
+
+
+    p{
+    margin-top: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+}
+    
+    }
+
+    .card__icon__cifrao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:50px;
+    width: 4rem;
+    background: #850000;
+
+i {
+    font-size: 30px;
+    color: #fff;
+}
+}
+}
+
+
+    
+}
+}
+
+@media screen and (max-width: 600px) {
+    
+    .Cards__container{
+        .card__row{
+          display: flex;
+          flex-direction: column;
+
+            .card__user__cliente{
+                width: 100%;
+            }
+
+            .card__doc{
+                width: 100%;
+            }
+
+            .card__cifrao{
+                width: 100%;
+            }
+    
+        }
+
+    }
+}
+
+
+
+

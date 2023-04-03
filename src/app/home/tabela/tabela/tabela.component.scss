@@ -1,0 +1,95 @@
+.table__container{
+    height: auto;
+    width: 100%;
+    margin-top: 2.50rem;
+    .heading{
+        font-size: 15px;
+        text-align: left;
+        color: #000;
+        margin-bottom: 0.50rem;
+        margin-top: 0.50rem;
+        font-weight: 500;
+    }
+
+
+    table{
+        background: #fff;
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
+
+        thead{
+            tr,th{
+                font-size: 11px;
+                letter-spacing: 0;
+                opacity: 1;
+                padding: 5px;
+                font-weight: 500;
+                vertical-align: top;
+                border-top: 3px solid #BD0E16;
+                border-bottom: 1px solid #D9D9D9;
+                color: #000;
+                font-family: 'Roboto', sans-serif;
+            }
+
+        
+
+
+        }
+
+        td{
+            font-size: 10px;
+            letter-spacing: 0.35px;
+            font-weight: 400;
+            color: #000;
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #D9D9D9;
+            font-family: 'Roboto', sans-serif;
+            span{
+                font-weight: 400;
+                color: #19AF00;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+        .table thead{
+            display: none;
+        }
+
+        .table, .table tbody, .table tr, .table td{
+            display: block;
+            width: 100%;
+        }
+
+        .table tr{
+            margin-bottom: 1rem;
+            box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
+        }
+
+        .table tbody tr td{
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+            font-weight: 500;
+        }
+
+
+        .table td:before{
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 15px;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .table{
+            box-shadow: 0px;
+        }
+}
