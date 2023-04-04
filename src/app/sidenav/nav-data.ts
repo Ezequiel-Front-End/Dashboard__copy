@@ -5,7 +5,7 @@ export const navbarData = [
         label: 'Home'
     },
     {
-        routerLink: 'dashboard Cliente',
+        routerLink: 'Dashboard',
         icon: 'bx bx-user-circle',
         label: 'Dashboard Cliente'
     },
@@ -44,6 +44,8 @@ export const navbarData = [
         routerLink: 'Exit',
         icon: 'bx bx-exit',
         label: 'Exit'
-    },
+    }
+    
+
 
 ];

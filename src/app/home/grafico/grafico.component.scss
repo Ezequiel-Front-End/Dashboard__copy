@@ -1,21 +1,19 @@
 .canvas__container{
-    height: 200px;
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    
-}
-
-.titulo__grafico{
-    margin-top: 2rem;
+    position: relative;
+    height: auto;
     width: 100%;
-    text-align: left;
+    margin-top: 1rem;
 
-    p{
-        font-size: 15px;
-        font-weight: 500;
+    .my_canvas{
+        position: absolute;
+        height: auto;
+        width: auto;
     }
 }
 
+@media screen and (max-width: 740px) {
+    .my_canvas{
+        width: auto;
+        height: auto;
+    }
+}

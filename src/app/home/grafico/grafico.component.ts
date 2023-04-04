@@ -11,7 +11,7 @@ Chart.register(...registerables);
 
 export class GraficoComponent implements OnInit {
 
-  pieChartData = {
+  pieChartData = {  
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
       {
@@ -23,7 +23,7 @@ export class GraficoComponent implements OnInit {
   }
 
   pieChartOption = {
-    responsive: false
+    responsive: true
   }
 
   public height: number = 200;

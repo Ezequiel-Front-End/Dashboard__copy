@@ -1,0 +1,12 @@
+<div class="titulo">
+    <p>Máximo Drawdown por peso ativo</p>
+</div>
+<div class="container__grafico">
+    <canvas class="chart" baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [type]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+</canvas>
+</div>

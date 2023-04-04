@@ -1,0 +1,34 @@
+
+<div class="container__grafico">
+    <div class="grafico">
+
+        <div class="grafico__column">
+            <div class="titulo">
+                <p>Fundos Imobiliarios</p>
+            </div>
+            <canvas class="g" baseChart
+            [height]="height"
+            [width]="width"
+            [type]="type"
+            [data]=" ColumnChartData"
+            [options]="ColumnChartOption"></canvas>
+        </div>
+    
+       
+        <div class="grafico__pie">
+            <div class="titulo">
+                <p>Ações</p>
+            </div>
+            <canvas class="g"  baseChart
+            [height]="350"
+            [width]="350"
+            type="pie"
+            [data]=" pieChartData"
+            [options]="pieChartOption"></canvas>
+        </div>
+      
+    </div>
+   
+
+
+</div>

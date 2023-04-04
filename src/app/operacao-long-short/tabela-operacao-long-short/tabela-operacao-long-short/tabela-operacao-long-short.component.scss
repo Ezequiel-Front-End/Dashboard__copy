@@ -1,10 +1,8 @@
 .table__container{
     height: auto;
     width: 100%;
-
-
     .heading{
-        font-size: 20px;
+        font-size: 15px;
         text-align: left;
         color: #000;
         margin-bottom: 0.50rem;
@@ -21,7 +19,7 @@
 
         thead{
             tr,th{
-                font-size: 0.90rem;
+                font-size: 11px;
                 letter-spacing: 0;
                 opacity: 1;
                 padding: 5px;
@@ -39,7 +37,7 @@
         }
 
         td{
-            font-size: 0.75rem;
+            font-size: 10px;
             letter-spacing: 0.35px;
             font-weight: 400;
             color: #000;
