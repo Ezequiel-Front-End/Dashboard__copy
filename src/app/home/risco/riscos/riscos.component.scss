@@ -2,39 +2,40 @@
 .card__container{
     height: auto;
     width: 100%;
+    display: flex;
+    
 
     .row{
         height: auto;
-        width: auto;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         
-     
+
         .cards{
             height: auto;
             width: auto;
-            padding:6px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
             gap: 1rem;
             flex-wrap: wrap;
 
-            .titulo__container{
+            .titulo{
                 width: 100%;
                 text-align: left;
 
                 p{
-                    font-size: 20px;
+                    font-size: 20pt;
                     font-weight: 500;
                 }
             }
 
-            .card{
+            .card-content{
                 box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
-                height:150px;
-                width: 12rem;
+                height:14rem;
+                width: 14rem;
                 background: #fff;
                 border-top: 3px solid #BD0E16;
                 display: flex;
@@ -45,18 +46,18 @@
 
 
                 img{
-                    height: 30pt;
+                    height: 4rem;
                 }
 
                 p{
                     text-align: center;
                     font-weight: 400;
-                    font-size: 12px;
+                    font-size: 11pt;
                     margin-top: 1rem;
                 }
 
                 span{
-                    font-size: 14px;
+                    font-size: 15pt;
                     margin-top: 5pt;
                     font-weight: 500;
                     color: rgb(3, 145, 3);
@@ -72,11 +73,20 @@
     .row{
         width: 100%;
         flex-direction: column;
+
+        .grafico{
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            height: auto;
+            width: 100%;
+        }
     }
     .cards{
         flex-direction: column;
     }
 }
+
+
 
 
 

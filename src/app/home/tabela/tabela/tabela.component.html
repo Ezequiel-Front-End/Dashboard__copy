@@ -1,52 +1,43 @@
 <div class="table__container">
-    <h3 class="heading">Próximos Vencimentos</h3>
-    <table class="table">
-    <thead class="thead">
-        <tr>
-            <th>Operações</th>
-            <th>Papel</th>
-            <th>Vencimento</th>
-            <th>Quantidade</th>
-            <th>Resultado</th>
-        </tr>
-    </thead>
+  <h3 class="heading">Próximos Vencimentos</h3>
+<div class="search-container">
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="Buscar Informações" autocomplete="off" (keyup)="filterData($event)"> 
+    </mat-form-field>
 
-    <tbody>
-        <tr>
-            <td data-label="Operações">Call Ratio</td>
-            <td data-label="Papel">ITUB4</td>
-            <td data-label="Vencimento">20/11/2023</td>
-            <td data-label="Quantidade">8955</td>
-            <td data-label="Resultado"><span class="text__open">R$ 50.000.00</span></td>
-         
-        </tr>
+    <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <tr>
-            <td data-label="Operações">Front End</td>
-            <td data-label="Papel">ITUB3</td>
-            <td data-label="Vencimento">20/11/2023</td>
-            <td data-label="Quantidade">1000</td>
-            <td data-label="Resultado"><span class="text__open">R$ 40.000.00</span></td>
-          
-        </tr>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="username">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Comentario<th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+      
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+      </ng-container>
 
-        <tr>
-            <td data-label="Operações">Back End</td>
-            <td data-label="Papel">ITUB2</td>
-            <td data-label="Vencimento">20/11/2023</td>
-            <td data-label="Quantidade">1562</td>
-            <td data-label="Resultado"><span class="text__open">R$ 25.000.00</span></td>
-            
-        </tr>
+     
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
 
-        <tr>
-            <td data-label="Operações">Full Stack</td>
-            <td data-label="Papel">ITUB1</td>
-            <td data-label="Vencimento">20/11/2023</td>
-            <td data-label="Quantidade">3666</td>
-            <td data-label="Resultado"><span class="text__open">R$ 90.000.00</span></td>
-          
-        </tr>
-    </tbody>
-</table>
 </div>
+
+
+    <mat-paginator class="page" #paginator [length]="paginator?.length" [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+
+
+
+
+    <mat-spinner></mat-spinner>
+
+

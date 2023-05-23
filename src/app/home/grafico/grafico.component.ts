@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart, ChartType, registerables } from 'node_modules/chart.js';
-Chart.register(...registerables);
+import { Component, OnInit,  ViewChild } from '@angular/core';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 
 
 @Component({
@@ -11,24 +12,42 @@ Chart.register(...registerables);
 
 export class GraficoComponent implements OnInit {
 
-  pieChartData = {  
-    labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
-    datasets: [
-      {
-        data: [89, 32, 34, 54, 67, 98],
-        label: 'Sales Percen',
-        fill: true
-      }
-    ]
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  public pieChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      datalabels: {
+        formatter: (value, ctx) => {
+          if (ctx.chart.data.labels) {
+            return ctx.chart.data.labels[ctx.dataIndex];
+          }
+        },
+      },
+    }
+  };
+
+  public pieChartData: ChartData<'pie', number[], string | string[]> = {
+    labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
+    datasets: [ {
+      data: [ 300, 500, 100 ]
+    } ]
+  };
+  public pieChartType: ChartType = 'pie';
+  public pieChartPlugins = [ DatalabelsPlugin ];
+
+  // events
+  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
   }
 
-  pieChartOption = {
-    responsive: true
+  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
   }
-
-  public height: number = 200;
-  public width: number = 400;
-  public type: ChartType = 'pie'
 
 
   constructor(){}
@@ -36,8 +55,4 @@ export class GraficoComponent implements OnInit {
     
   }
 
-
-  public chartPie(): void{
-    
-  }
 }

@@ -3,13 +3,11 @@
     <div class="titulo__grafico">
     <p>Composição Sentorial</p>
     </div>
-    <div class="my__Canvas">
-    <canvas class="grafico" baseChart
-    [height]="height"
-    [width]="width"
-    [type]="type"
-    [data]=" pieChartData"
-    [options]="pieChartOption"
-    ></canvas>
-</div>
+   
+        <canvas baseChart class="chart"
+        [data]="pieChartData"
+        [type]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins">
+    </canvas>
 </div>     

@@ -1,0 +1,19 @@
+.container_graficos{
+    height: auto;
+    width: 100%;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    
+    .grafico{
+        height: 300px;
+        width: auto;
+    }
+    
+    .row{
+        p{
+            font-size: 20pt;
+            font-weight: 500;
+        }
+    }
+}
+

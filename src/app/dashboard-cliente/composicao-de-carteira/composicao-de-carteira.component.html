@@ -1,0 +1,27 @@
+<div class="container_graficos">
+    <div class="row">
+        <div class="col-sm-12 col-lg-6">
+            <p>Composição de Carteira</p>
+            <div class="grafico">
+        <canvas baseChart class="chart"
+        [data]="pieChartData"
+        [type]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins">
+            </canvas>
+        </div>
+        </div>
+
+        <div class="col-lg">
+            <p>Retorno Financeiro Por Mês</p>
+           <div class="grafico">
+            <canvas baseChart class="chart"
+            [data]="pieChartDataBar"
+            [type]="pieChartTypeBar"
+            [options]="pieChartOptionsBar"
+            [plugins]="pieChartPluginsBar">
+                </canvas>
+           </div>
+        </div>
+    </div>
+</div>

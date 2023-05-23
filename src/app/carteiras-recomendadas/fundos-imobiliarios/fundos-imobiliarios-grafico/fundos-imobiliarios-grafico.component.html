@@ -6,12 +6,14 @@
             <div class="titulo">
                 <p>Fundos Imobiliarios</p>
             </div>
-            <canvas class="g" baseChart
-            [height]="height"
-            [width]="width"
-            [type]="type"
-            [data]=" ColumnChartData"
-            [options]="ColumnChartOption"></canvas>
+            <div class="grafico">
+                <canvas baseChart class="chart"
+                [data]="pieChartDataBar"
+                [type]="pieChartTypeBar"
+                [options]="pieChartOptionsBar"
+                [plugins]="pieChartPluginsBar">
+                    </canvas>
+            </div>  
         </div>
     
        
@@ -19,12 +21,14 @@
             <div class="titulo">
                 <p>Ações</p>
             </div>
-            <canvas class="g"  baseChart
-            [height]="350"
-            [width]="350"
-            type="pie"
-            [data]=" pieChartData"
-            [options]="pieChartOption"></canvas>
+                <div class="grafico">
+                    <canvas baseChart class="chart"
+                [data]="pieChartData"
+                [type]="pieChartType"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins">
+                    </canvas>
+                </div>
         </div>
       
     </div>

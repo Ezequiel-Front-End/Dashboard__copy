@@ -1,69 +1,35 @@
 <div class="table__container">
     <h3 class="heading">Carteira</h3>
-    <table class="table">
-    <thead class="thead">
-        <tr>
-            <th>Papel</th>
-            <th>Quantidade</th>
-            <th>Peso</th>
-            <th>PM</th>
-            <th>Valor de Compra</th>
-            <th>Valor de Renda</th>
-            <th>%</th>
-            <th>Resultado</th>
-        </tr>
-    </thead>
+    <mat-form-field appearance="fill">
+      <input matInput placeholder="Buscar Informações" autocomplete="off" (keyup)="filterData($event)"> 
+    </mat-form-field>
 
-    <tbody>
+    <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <tr>
-            <td data-label="Papel">Call Ratio</td>
-            <td data-label="Qunatidade">ITUB4</td>
-            <td data-label="Peso">20/11/2023</td>
-            <td data-label="PM">8955</td>
-            <td data-label="Valor de Compra">8955</td>
-            <td data-label="Valor de Renda">8955</td>
-            <td data-label="%">8955</td>
-            <td data-label="Resultado"><span class="text__open">R$ 50.000.00</span></td>
-        </tr> 
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="title">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>title<th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+      
+  
+      <ng-container matColumnDef="completed">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>completed</th>
+        <td mat-cell *matCellDef="let element"> {{element.completed}} </td>
+      </ng-container>
 
-        <tr>
-            <td data-label="Papel">Call Ratio</td>
-            <td data-label="Qunatidade">ITUB4</td>
-            <td data-label="Peso">20/11/2023</td>
-            <td data-label="PM">8955</td>
-            <td data-label="Valor de Compra">8955</td>
-            <td data-label="Valor de Renda">8955</td>
-            <td data-label="%">8955</td>
-            <td data-label="Resultado"><span class="text__open">R$ 50.000.00</span></td>
-        </tr> 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
-        <tr>
-            <td data-label="Papel">Call Ratio</td>
-            <td data-label="Qunatidade">ITUB4</td>
-            <td data-label="Peso">20/11/2023</td>
-            <td data-label="PM">8955</td>
-            <td data-label="Valor de Compra">8955</td>
-            <td data-label="Valor de Renda">8955</td>
-            <td data-label="%">8955</td>
-            <td data-label="Resultado"><span class="text__open">R$ 50.000.00</span></td>
-        </tr> 
 
-        <tr>
-            <td data-label="Papel">Call Ratio</td>
-            <td data-label="Qunatidade">ITUB4</td>
-            <td data-label="Peso">20/11/2023</td>
-            <td data-label="PM">8955</td>
-            <td data-label="Valor de Compra">8955</td>
-            <td data-label="Valor de Renda">8955</td>
-            <td data-label="%">8955</td>
-            <td data-label="Resultado"><span class="text__open">R$ 50.000.00</span></td>
-        </tr> 
-          
-       
-    </tbody>
-</table>
 </div>
+
+<mat-paginator class="page" #paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
 
 
 

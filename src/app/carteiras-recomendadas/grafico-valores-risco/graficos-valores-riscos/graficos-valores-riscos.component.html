@@ -4,12 +4,12 @@
 
 <div class="container__grafico">
     <div class="grafico">
-        <canvas class="grafico" baseChart
-        [height]="height"
-        [width]="width"
-        [type]="type"
-        [data]=" pieChartData"
-        [options]="pieChartOption"
-        ></canvas>
+        <div class="grafico">
+            <canvas baseChart class="chart"
+            [data]="pieChartDataBar"
+            [type]="pieChartTypeBar"
+            [options]="pieChartOptionsBar"
+            [plugins]="pieChartPluginsBar">
+            </canvas>
     </div>
 </div>

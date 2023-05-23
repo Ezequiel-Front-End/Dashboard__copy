@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartType, registerables } from 'node_modules/chart.js';
-Chart.register(...registerables);
+import DatalabelsPlugin from 'chartjs-plugin-datalabels';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'app-fundos-imobiliarios-grafico',
@@ -9,45 +10,85 @@ Chart.register(...registerables);
 })
 export class FundosImobiliariosGraficoComponent implements OnInit{
 
-  ColumnChartData = {  
-    labels: ['janeiro', 'Fevereiro', 'Março', 'Abril', 'Junho'],
-    datasets: [
-      {
-        data: [89, 32, 34, 54, 67, 98],
-        label: 'Sales Percen',
-        fill: true
-      },
-    ]
-  }
-
-  ColumnChartOption = {
-    responsive: true,
-    backgroundColor: '#4472C4'
-  }
-
-
   
-  pieChartData = {  
-    labels: ['janeiro', 'Fevereiro', 'Março', 'Abril', 'Junho'],
-    datasets: [
-      {
-        data: [89, 32, 34, 54, 67, 98],
-        label: 'Sales Percen',
-        fill: true
-      },
-    ]
-  }
-
-  pieChartOption = {
+  
+  //pie
+  public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    borderWidth:0
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      datalabels: {
+        formatter: (value, ctx) => {
+          if (ctx.chart.data.labels) {
+            return ctx.chart.data.labels[ctx.dataIndex];
+          }
+        },
+      },
+    }
+  };
+
+  public pieChartData: ChartData<'pie', number[], string | string[]> = {
+    labels: ['R$: 1.000.00'],
+    datasets: [ {
+      data: [ 300 ]
+    } ]
+  };
+  public pieChartType: ChartType = 'pie';
+  public pieChartPlugins = [ DatalabelsPlugin ];
+
+  // events
+  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
   }
-  public height: number = 200;
-  public width: number = 400;
-  public type: ChartType = 'bar'
-  public typePie: ChartType = 'pie'
+
+  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+ 
 
 
+
+
+
+   
+  //bar
+  public pieChartOptionsBar: ChartConfiguration['options'] = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      datalabels: {
+        formatter: (value, ctx) => {
+          if (ctx.chart.data.labels) {
+            return ctx.chart.data.labels[ctx.dataIndex];
+          }
+        },
+      },
+    }
+  };
+
+  public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
+    labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
+    datasets: [ {
+      data: [ 100, 200, 300, 400, 500 ]
+    } ]
+  };
+  public pieChartTypeBar: ChartType = 'bar';
+  public pieChartPluginsBar = [ DatalabelsPlugin ];
+
+  // events
+  public chartView({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartViewed({ event, active }: { event: ChartEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
 
 
 

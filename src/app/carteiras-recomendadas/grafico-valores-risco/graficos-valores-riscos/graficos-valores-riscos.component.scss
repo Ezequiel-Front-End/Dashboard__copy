@@ -1,17 +1,31 @@
 .titulo{
     width: 100%;
     margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    
+
     p{
-        font-size: 15px;
+        font-size: 20pt;
         font-weight: 500;
     }
 }
 
 .container__grafico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: auto;
     width: 100%;
     background: #fff;
     border-top: 3px solid #BC0D15;
     padding: 0rem 1rem;
+
+
+    .grafico{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 500px;
+    }
 }

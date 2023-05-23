@@ -1,8 +1,9 @@
 .table__container{
     height: auto;
     width: 100%;
+    margin-top: 2rem;
     .heading{
-        font-size: 15px;
+        font-size: 20pt;
         text-align: left;
         color: #000;
         margin-bottom: 0.50rem;
@@ -11,84 +12,128 @@
     }
 
 
-    table{
-        background: #fff;
-        width: 100%;
-        border-collapse: collapse;
-        box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
-
-        thead{
-            tr,th{
-                font-size: 11px;
-                letter-spacing: 0;
-                opacity: 1;
-                padding: 5px;
-                font-weight: 500;
-                vertical-align: top;
-                border-top: 3px solid #BD0E16;
-                border-bottom: 1px solid #D9D9D9;
-                color: #000;
-                font-family: 'Roboto', sans-serif;
-            }
-
-        
-
-
-        }
-
-        td{
-            font-size: 10px;
-            letter-spacing: 0.35px;
-            font-weight: 400;
-            color: #000;
-            padding: 8px;
-            text-align: center;
-            border-bottom: 1px solid #D9D9D9;
-            font-family: 'Roboto', sans-serif;
-            span{
-                font-weight: 400;
-                color: #19AF00;
-            }
-        }
-    }
 }
+table {
+    margin-bottom: 1rem;
+    width: 100%;
+    border-top: 3px solid #BC0D15;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
+  tr.detail-row {
+    height: 0;
+  }
+  
+  tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+  }
+  
+  .element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .element-description {
+    padding: 16px;
+  }
+  
+  .element-description-attribution {
+    opacity: 0.5;
+  }
+  
+  p {
+    font-family: Lato;
+  }
+  
+  section {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    height: 50px !important
+  }
+  
+  ::ng-deep .mat-form-field-infix {
+    padding-top: 1px !important;
+  }
+  
+  .mat-raised-button {
+    min-width: 45px;
+    min-height: 45px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-content: left;
+    width: 40px;
+    padding-top: 8px;
+    padding-left: 0px;
+  }
+  
+  .signs{
+    font-weight: bolder;
+    font-size: large;
+  }
+  
+  .mat-ripple-element{
+    display: none !important;
+  }
+  
+  .mat-input-element {
+    padding-top: 10px !important;
+  }
+  
+  .page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mat-elevation-z8{
+    box-shadow: 1px 1px 4px rgba(116, 114, 114, 0.336);
+  }
 
-
-@media screen and (max-width: 768px) {
-        .table thead{
-            display: none;
-        }
-
-        .table, .table tbody, .table tr, .table td{
-            display: block;
-            width: 100%;
-        }
-
-        .table tr{
-            margin-bottom: 1rem;
-            box-shadow: 1px 1px 6px rgba(41, 41, 41, 0.089);
-        }
-
-        .table tbody tr td{
-            text-align: right;
-            padding-left: 50%;
-            position: relative;
-            font-weight: 500;
-        }
-
-
-        .table td:before{
-            content: attr(data-label);
-            position: absolute;
-            left: 0;
-            width: 50%;
-            padding-left: 15px;
-            font-weight: 500;
-            font-size: 14px;
-            text-align: left;
-        }
-
-        .table{
-            box-shadow: 0px;
-        }
+  .heading{
+    font-size: 20pt;
+    text-align: left;
+    color: #000;
+    margin-bottom: 0.50rem;
+    margin-top: 0.50rem;
+    font-weight: bolder;
 }

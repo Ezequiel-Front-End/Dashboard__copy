@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+
 
 @Component({
   selector: 'app-maximo-drawdown',
@@ -8,14 +10,17 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./maximo-drawdown.component.scss']
 })
 export class MaximoDrawdownComponent implements OnInit{
+
+  constructor(){}
+  ngOnInit(): void {
+   
+  }
+
+  
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   public barChartOptions: ChartConfiguration['options'] = {
-    elements: {
-      line: {
-        tension: 0.4
-      }
-    },
+    responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
@@ -24,15 +29,22 @@ export class MaximoDrawdownComponent implements OnInit{
       }
     },
     plugins: {
-      legend: { display: true },
-    },
-    responsive: true
+      legend: {
+        display: true,
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end'
+      }
+    }
   };
-  public barChartLabels: string[] = [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ];
   public barChartType: ChartType = 'bar';
+  public barChartPlugins = [
+    DataLabelsPlugin
+  ];
 
   public barChartData: ChartData<'bar'> = {
-    labels: this.barChartLabels,
+    labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
     datasets: [
       { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' },
       { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' }
@@ -49,12 +61,17 @@ export class MaximoDrawdownComponent implements OnInit{
   }
 
   public randomize(): void {
-    this.barChartType = this.barChartType === 'bar' ? 'line' : 'bar';
-  }
+    // Only Change 3 values
+    this.barChartData.datasets[0].data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      Math.round(Math.random() * 100),
+      56,
+      Math.round(Math.random() * 100),
+      40 ];
 
-  constructor(){}
-  ngOnInit(): void {
-   
+    this.chart?.update();
   }
 
 }

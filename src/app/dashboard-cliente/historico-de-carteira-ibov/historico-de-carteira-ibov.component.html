@@ -1,0 +1,14 @@
+<div class="titulo">
+    <p>Histórico de Carteira vs IBOV</p>
+</div>
+<div class="container__grafico">
+    <canvas baseChart class="chart"
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+</canvas>
+
+</div>
