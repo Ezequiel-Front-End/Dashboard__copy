@@ -32,9 +32,9 @@ export class GraficoComponent implements OnInit {
   };
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
+    labels: ['ezequiel', 'jasmine', 'opan', 'HIroshi'],
     datasets: [ {
-      data: [ 300, 500, 100 ]
+      data: [ 300, 300, 300, 400 ]
     } ]
   };
   public pieChartType: ChartType = 'pie';

@@ -33,7 +33,9 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['R$: 1.000.00'],
     datasets: [ {
-      data: [ 300 ]
+      data: [ 300 ],
+      backgroundColor: '#008A16',
+      borderWidth: 0
     } ]
   };
   public pieChartType: ChartType = 'pie';
@@ -75,7 +77,8 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
   public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
     labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
     datasets: [ {
-      data: [ 100, 200, 300, 400, 500 ]
+      data: [ 100, 200, 300, 400, 500 ],
+      backgroundColor: '#4472C4'
     } ]
   };
   public pieChartTypeBar: ChartType = 'bar';

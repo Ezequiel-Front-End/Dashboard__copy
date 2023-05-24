@@ -3,14 +3,20 @@
     height: auto;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+ 
+ 
     
 
     .row{
         height: auto;
-        width: 100%;
+        width: 70%;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         justify-content: space-between;
+        margin-right: 1rem;
+        position: relative;
+       
         
 
         .cards{
@@ -21,6 +27,9 @@
             justify-content: left;
             gap: 1rem;
             flex-wrap: wrap;
+            position: relative;
+            top:0;
+            margin-top: 2rem;
 
             .titulo{
                 width: 100%;

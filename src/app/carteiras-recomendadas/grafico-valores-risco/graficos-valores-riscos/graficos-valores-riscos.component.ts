@@ -17,49 +17,8 @@ export class GraficosValoresRiscosComponent implements OnInit{
   
   }
 
-  
-  //pie
-  public pieChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'top',
-      },
-      datalabels: {
-        formatter: (value, ctx) => {
-          if (ctx.chart.data.labels) {
-            return ctx.chart.data.labels[ctx.dataIndex];
-          }
-        },
-      },
-    }
-  };
-
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['R$: 1.000.00'],
-    datasets: [ {
-      data: [ 300 ]
-    } ]
-  };
-  public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [ DatalabelsPlugin ];
-
-  // events
-  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
- 
 
 
-
-
-
-   
   //bar
   public pieChartOptionsBar: ChartConfiguration['options'] = {
     responsive: true,
@@ -81,7 +40,8 @@ export class GraficosValoresRiscosComponent implements OnInit{
   public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
     labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
     datasets: [ {
-      data: [ 100, 200, 300, 400, 500 ]
+      data: [ 100, 200, 300, 400, 500 ],
+      backgroundColor: '#4472C4'
     } ]
   };
   public pieChartTypeBar: ChartType = 'bar';
