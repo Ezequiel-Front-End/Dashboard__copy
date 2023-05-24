@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
+import { Dados } from 'src/app/model/dados';
 import { ModelService } from 'src/app/service/model.service';
 
 @Component({
@@ -10,6 +12,9 @@ import { ModelService } from 'src/app/service/model.service';
   styleUrls: ['./proximos-vencimentos.component.scss']
 })
 export class ProximosVencimentosComponent implements OnInit {
+
+
+  
 
   displayedColumns = ['name', 'username', 'email']
   dataSource!: MatTableDataSource<any>; 
@@ -24,9 +29,7 @@ export class ProximosVencimentosComponent implements OnInit {
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
   })
-
-
-  }
+}
 
 
   filterData(pesquisar: any){

@@ -22,6 +22,7 @@ import { MatSort } from '@angular/material/sort';
 export class TabelaComponent implements OnInit{
 
 
+
   displayedColumns = ['name', 'username', 'email']
   dataSource!: MatTableDataSource<any>; 
 

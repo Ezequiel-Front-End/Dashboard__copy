@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
-import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType, Colors } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 
@@ -35,7 +35,9 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['R$: 1.000.00'],
     datasets: [ {
-      data: [ 300 ]
+      data: [ 300 ],
+      backgroundColor: '#008A16',
+      borderWidth: 0
     } ]
   };
   public pieChartType: ChartType = 'pie';
@@ -74,7 +76,8 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
     labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
     datasets: [ {
-      data: [ 100, 200, 300, 400, 500 ]
+      data: [ 100, 200, 300, 400, 500 ],
+      backgroundColor: '#4472C4',
     } ]
   };
   public pieChartTypeBar: ChartType = 'bar';
@@ -92,9 +95,6 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
 
 
 
-
-
-  
 
   construcutor() {}
   ngOnInit(): void {

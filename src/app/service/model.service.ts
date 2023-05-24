@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { Dados } from '../model/dados';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelService {
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -13,7 +16,7 @@ export class ModelService {
   }
 
   getUsers(){
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/users');
+    return this.http.get<Dados[]>('https://jsonplaceholder.typicode.com/users');
   }
 
   getAll(){
