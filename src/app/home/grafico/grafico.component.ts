@@ -1,4 +1,4 @@
-import { Component, OnInit,  ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
@@ -22,6 +22,7 @@ export class GraficoComponent implements OnInit {
         position: 'top',
       },
       datalabels: {
+        color: 'white',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -32,13 +33,24 @@ export class GraficoComponent implements OnInit {
   };
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['ezequiel', 'jasmine', 'opan', 'HIroshi'],
-    datasets: [ {
-      data: [ 300, 300, 300, 400 ]
-    } ]
+    labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
+    datasets: [
+      {
+        backgroundColor: [
+          '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
+        ],
+        borderColor: [
+          '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
+        ],
+        data: [35, 45, 54, 45, 98],
+        label: 'Resultado',
+
+
+      }
+    ]
   };
   public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [ DatalabelsPlugin ];
+  public pieChartPlugins = [DatalabelsPlugin];
 
   // events
   public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
@@ -50,9 +62,9 @@ export class GraficoComponent implements OnInit {
   }
 
 
-  constructor(){}
+  constructor() { }
   ngOnInit(): void {
-    
+
   }
 
 }
