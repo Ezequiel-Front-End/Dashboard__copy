@@ -13,6 +13,7 @@ import { CarteirasRecomendadasComponent } from './carteiras-recomendadas/carteir
 import { ExitComponent } from './exit/exit.component';
 import { HedgeComponent } from './hedge/hedge.component';
 import { HomeComponent } from './home/home.component';
+import { AcessoComponent } from './acesso/acesso.component';
 import { OperacaoEstruturadasComponent } from './operacao-estruturadas/operacao-estruturadas.component';
 import { OperacaoLongShortComponent } from './operacao-long-short/operacao-long-short.component';
 import { RelatorioDePerformanceComponent } from './relatorio-de-performance/relatorio-de-performance.component';
@@ -37,12 +38,12 @@ import { HistoricoDeCarteiraIbovComponent } from './dashboard-cliente/historico-
 import { ComposicaoDeCarteiraComponent } from './dashboard-cliente/composicao-de-carteira/composicao-de-carteira.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatInputModule} from '@angular/material/input'
+import { MatInputModule} from '@angular/material/input'
 import { MatPaginatorIntlPtBr } from './service/paginator-ptbr-i8n';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -55,6 +56,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ExitComponent,
     HedgeComponent,
     HomeComponent,
+    AcessoComponent,
     OperacaoEstruturadasComponent,
     OperacaoLongShortComponent,
     RelatorioDePerformanceComponent,

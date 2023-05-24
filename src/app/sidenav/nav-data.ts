@@ -5,6 +5,11 @@ export const navbarData = [
         label: 'Home'
     },
     {
+        routerLink: 'Acesso',
+        icon: 'bx bx-category',
+        label: 'Acesso'
+    },
+    {
         routerLink: 'Dashboard',
         icon: 'bx bx-user-circle',
         label: 'Dashboard Cliente'
