@@ -61,10 +61,11 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
     responsive: true,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'top',
       },
       datalabels: {
+        color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];

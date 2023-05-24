@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
-import { ChartConfiguration, ChartData, ChartEvent, ChartType, Colors } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 
@@ -14,7 +14,7 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
 
-  //pie
+  //pie => grafico de pizza
   public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     plugins: {
@@ -31,6 +31,7 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
       },
     }
   };
+  
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['R$: 1.000.00'],
@@ -55,15 +56,20 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
 
 
   
-  //bar
+  //bar => grafico de colunas
   public pieChartOptionsBar: ChartConfiguration['options'] = {
     responsive: true,
     plugins: {
       legend: {
-        display: true,
+        labels:{
+             color: '#fff'
+        },
+        display: false,
         position: 'top',
       },
+      
       datalabels: {
+        color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -73,13 +79,18 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
     }
   };
 
-  public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
-    labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
-    datasets: [ {
+
+
+  public pieChartDataBar: ChartData<'bar', number[], string | string[]> = {
+      labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
+      datasets: [ {
       data: [ 100, 200, 300, 400, 500 ],
-      backgroundColor: '#4472C4',
-    } ]
-  };
+      backgroundColor: ['#4472C4']
+    },]
+  }
+  
+  
+
   public pieChartTypeBar: ChartType = 'bar';
   public pieChartPluginsBar = [ DatalabelsPlugin ];
 
@@ -93,6 +104,38 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   }
 
 
+//   var config = {
+//     type: 'doughnut',
+//     data: {
+//         labels: [
+//           "Red",
+//           "Green",
+//           "Yellow"
+//         ],
+//         datasets: [{
+//             data: [300, 50, 100],
+//             backgroundColor: [
+//               "#FF6384",
+//               "#36A2EB",
+//               "#FFCE56"
+//             ],
+//             hoverBackgroundColor: [
+//               "#FF6384",
+//               "#36A2EB",
+//               "#FFCE56"
+//             ]
+//         }]
+//     },
+// options: {
+//     elements: {
+//         center: {
+//             text: '90,0 bi',
+//   color: '#FF6384', // Default is #000000
+//   fontStyle: 'Arial', // Default is Arial
+//   sidePadding: 20 // Defualt is 20 (as a percentage)
+//         }
+//     }
+// }
 
 
 
