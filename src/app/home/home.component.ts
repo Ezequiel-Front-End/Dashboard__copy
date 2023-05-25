@@ -11,7 +11,10 @@ export class HomeComponent implements OnInit {
 
   constructor(private _service: ModelService) { }
   ngOnInit(): void {
+    console.log('nada');
+    
     this._service.tratamento()
+
   }
 
 

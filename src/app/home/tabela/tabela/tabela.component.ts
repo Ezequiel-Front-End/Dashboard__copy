@@ -23,7 +23,7 @@ export class TabelaComponent implements OnInit {
 
 
 
-  displayedColumns = ['name', 'username', 'email']
+  displayedColumns = ['dataRegistro', 'codigoCorretora', 'nomeCompleto']
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;

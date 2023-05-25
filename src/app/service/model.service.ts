@@ -84,7 +84,7 @@ export class ModelService {
     this.recebetoken().then(x => {
       let obj = x
       for (let y of obj) {
-        console.log([y] + y)
+        console.log(y);   
       }
     })
   }
