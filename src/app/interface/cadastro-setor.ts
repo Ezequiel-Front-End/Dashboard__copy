@@ -1,22 +1,10 @@
-export interface cadastroSetor {
+export class CadastroSetor {
 
-    "data": {
+    data: {
 
-        "dataRegistro": string,
-        "nomeSetor": string
+        dataRegistro: string;
+        nomeSetor: string;
         
-    }
+    } | undefined;
 
-}
-
-function setor(params:any) {
-    let processo: cadastroSetor = {
-
-        data: {
-
-            dataRegistro: "abc",
-            nomeSetor: "abc"
-            
-        }
-    }
 }

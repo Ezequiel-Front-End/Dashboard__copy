@@ -10,9 +10,6 @@ import { MatSort } from '@angular/material/sort';
 
 
 
-
-
-
 @Component({
   selector: 'app-tabela',
   templateUrl: './tabela.component.html',
@@ -23,7 +20,7 @@ export class TabelaComponent implements OnInit {
 
 
 
-  displayedColumns = ['dataRegistro', 'codigoCorretora', 'nomeCompleto']
+  displayedColumns = ['id', 'codigoCorretora', 'nomeCompleto']
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;
@@ -34,20 +31,19 @@ export class TabelaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._service.recebetoken().then((resp: any) => {
-      
+    this._service.cadastroAAI().then((resp: any) => {
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
 
     })
 
-
-
   }
 
-  filterData(pesquisa: any) {
-    this.dataSource.filter = pesquisa.target.value
+  filterData(evento: any) {
+    const filtro = (evento.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+    this.dataSource.filter = evento.target.value
   }
 
 
@@ -92,8 +88,5 @@ export class TabelaComponent implements OnInit {
 
 
   ]
-
-
-
 
 }

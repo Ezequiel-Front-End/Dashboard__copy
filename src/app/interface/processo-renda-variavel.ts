@@ -1,92 +1,93 @@
-export interface ProcessoRendaVariavel {
+export class ProcessoRendaVariavel {
+    data: {
+        // ctn_07
+        dataTemplate: {
 
-    // ctn_07
-    "dataTemplate": {
+            template: [
 
-        "template": [
-
-            {
-                "ticker": {
-                    "value": string,
-                    "label": string
-                },
-
-
-                "quantidade": number,
-                "financeiroCompra": number,
-                "financeiroAtual": number,
-                "financeiro": number,
-
-                // observação
-                "percentualInativo": string,
-                "percentualAtivo": string,
-
-                "encerrado": {
-
-                    "value": string,
-                    "label": string
-
-                },
-
-                "dataEncerramento": null,
-                "j_id": string
-
-            }
+                {
+                    ticker: {
+                        value: string;
+                        label: string;
+                    };
 
 
-        ]
-    },
+                    quantidade: number;
+                    financeiroCompra: number;
+                    financeiroAtual: number;
+                    financeiro: number;
+
+                    // observação
+                    percentualInativo: string;
+                    percentualAtivo: string;
+
+                    encerrado: {
+
+                        value: string;
+                        label: string;
+
+                    };
+
+                    dataEncerramento: null;
+                    j_id: string;
+
+                }
 
 
-    // ctn_10
-    "dataTemplateOpcao": {
+            ];
+        } | undefined;
 
 
-        "templateOpcao": [
-
-            {
-                "ticker": {
-                    "value": string,
-                    "label": string
-                },
+        // ctn_10
+        dataTemplateOpcao: {
 
 
-                "quantidade": number,
-                "financeiroCompra": number,
-                "financeiroAtual": number,
-                "strikeOpcao": number,
+            templateOpcao: [
+
+                {
+                    ticker: {
+                        value: string;
+                        label: string;
+                    };
 
 
-                "encerrado": {
-                    "value": string,
-                    "label": string
-                },
+                    quantidade: number;
+                    financeiroCompra: number;
+                    financeiroAtual: number;
+                    strikeOpcao: number;
 
 
-                "dataEncerramento": null,
-                "financeiro": number,
-                "percentualInativo": string,
-                "percentual": string,
+                    encerrado: {
+                        value: string;
+                        label: string;
+                    };
 
 
-                "j_id": string
-            },
+                    dataEncerramento: null;
+                    financeiro: number;
+                    percentualInativo: string;
+                    percentual: string;
 
 
-        ],
+                    j_id: string;
+                }
 
-        "encerrado": {
-            "value": string,
-            "label": string
-        },
 
-        "financeiroCompra": number,
-        "ticker": string
+            ];
 
-    }
+            encerrado: {
+                value: string;
+                label: string;
+            };
+
+            financeiroCompra: number;
+            ticker: string;
+
+        } | undefined;
+    } | undefined
 }
 
-function rendaVariavel(params: any) {
+/*function rendaVariavel(params: any) {
     let processo: ProcessoRendaVariavel = {
         dataTemplate: {
 
@@ -161,4 +162,4 @@ function rendaVariavel(params: any) {
 
         }
     }
-}
+}*/

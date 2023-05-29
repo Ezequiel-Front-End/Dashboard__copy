@@ -12,9 +12,9 @@
 
     <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="dataRegistro">
+    <ng-container matColumnDef="id">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Data de Registro</th>
-      <td mat-cell *matCellDef="let element"> {{element.data.slt_00001}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.slt_00001}} </td>
     </ng-container>
   
     <ng-container matColumnDef="codigoCorretora">
@@ -25,11 +25,9 @@
   
       <ng-container matColumnDef="nomeCompleto">
         <th mat-header-cell mat-sort-header *matHeaderCellDef>Nome Completo</th>
-        <td mat-cell *matCellDef="let element"> {{element.data.ipt_00004}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.data.ipt_00003}} </td>
       </ng-container>
 
-     
-    
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -8,14 +8,15 @@ import { ModelService } from '../service/model.service';
 })
 export class HomeComponent implements OnInit {
 
-
   constructor(private _service: ModelService) { }
   ngOnInit(): void {
-    console.log('nada');
-    
-    this._service.tratamento()
+    // this._service.gerarToken()
+    // this._service.cadastroAAI()
+    // this._service.cadastroCliente() 
+    // this._service.cadastroSetor()
+    // this._service.cadastroTicker()
+    this._service.processoRendaVariavel()
 
   }
-
 
 }
