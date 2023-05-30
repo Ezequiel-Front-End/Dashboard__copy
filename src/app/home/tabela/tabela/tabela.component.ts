@@ -23,7 +23,7 @@ export class TabelaComponent implements OnInit {
 
 
 
-  displayedColumns = ['name', 'username', 'email']
+  displayedColumns = ['id', 'name', 'data de registro']
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator!: MatPaginator;
@@ -92,7 +92,6 @@ export class TabelaComponent implements OnInit {
 
 
   ]
-
 
 
 

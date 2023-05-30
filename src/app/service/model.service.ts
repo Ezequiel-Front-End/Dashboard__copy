@@ -80,14 +80,15 @@ export class ModelService {
       .catch(error => console.log(error))
   }
 
-  tratamento() {
-    this.recebetoken().then(x => {
-      let obj = x
+  tratamento(){
+    this.recebetoken().then(e=>{
+      let obj = e
       for (let y of obj) {
-        console.log([y] + y)
+          console.log(y);      
       }
     })
   }
+
 
 }
 
