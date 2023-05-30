@@ -16,7 +16,7 @@ export class ProximosVencimentosComponent implements OnInit {
 
   
 
-  displayedColumns = ['name', 'username', 'email']
+  displayedColumns = ['Nome Completo', 'E-mail', 'Telefone']
   dataSource!: MatTableDataSource<any>; 
 
   @ViewChild('paginator') paginator! : MatPaginator;
@@ -24,8 +24,8 @@ export class ProximosVencimentosComponent implements OnInit {
 
   constructor(private api: ModelService) {}
   ngOnInit(): void {
-    this.api.getUsers().subscribe((resp: any)=>{
-      this.dataSource = new MatTableDataSource(resp);
+    this.api.cadastroCliente().then((value)=>{
+      this.dataSource = new MatTableDataSource((value));
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
   })
@@ -37,3 +37,4 @@ export class ProximosVencimentosComponent implements OnInit {
 }
 
 }
+

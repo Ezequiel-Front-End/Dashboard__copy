@@ -34,7 +34,7 @@ export class ProcessoRendaVariavel {
 
 
             ];
-        } | undefined;
+        } | any;
 
 
         // ctn_10
@@ -79,8 +79,8 @@ export class ProcessoRendaVariavel {
             financeiroCompra: number;
             ticker: string;
 
-        } | undefined;
-    } | undefined
+        } | any;
+    } | any
 }
 
 /*function rendaVariavel(params: any) {

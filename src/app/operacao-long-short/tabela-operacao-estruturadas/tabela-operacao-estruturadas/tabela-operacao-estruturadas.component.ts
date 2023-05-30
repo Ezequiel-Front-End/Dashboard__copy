@@ -12,7 +12,7 @@ import { ModelService } from 'src/app/service/model.service';
 export class TabelaOperacaoEstruturadasComponent implements OnInit{
 
 
-  displayedColumns = ['id', 'title', 'url']
+  displayedColumns = ['Nome Completo', 'E-mail', 'Telefone']
   dataSource!: MatTableDataSource<any>; 
 
 
@@ -22,7 +22,7 @@ export class TabelaOperacaoEstruturadasComponent implements OnInit{
   
   constructor(private api: ModelService) {}
   ngOnInit(): void {
-    this.api.getApi().subscribe((resp: any)=>{
+    this.api.cadastroCliente().then((resp)=>{
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;

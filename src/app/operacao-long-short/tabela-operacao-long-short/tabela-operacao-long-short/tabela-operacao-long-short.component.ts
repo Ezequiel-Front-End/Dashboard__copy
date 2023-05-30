@@ -12,7 +12,7 @@ import { ModelService } from 'src/app/service/model.service';
 export class TabelaOperacaoLongShortComponent implements OnInit{
 
   
-  displayedColumns = ['id', 'name', 'email']
+  displayedColumns = ['Nome Completo', 'E-mail', 'Telefone']
   dataSource!: MatTableDataSource<any>; 
 
   @ViewChild('paginator') paginator! : MatPaginator;
@@ -20,8 +20,8 @@ export class TabelaOperacaoLongShortComponent implements OnInit{
 
   constructor (private api: ModelService){}
   ngOnInit(): void {
-    this.api.getUsers().subscribe((resp: any)=>{
-      this.dataSource = new MatTableDataSource(resp);
+    this.api.cadastroCliente().then((value)=>{
+      this.dataSource = new MatTableDataSource(value);
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
     })
@@ -30,6 +30,8 @@ export class TabelaOperacaoLongShortComponent implements OnInit{
 
 
   filterData(pesquisa: any){
-    this.dataSource.filter = pesquisa.target.value
-  }
+
+      this.dataSource.filter = pesquisa.target.value
+      
+}
 }

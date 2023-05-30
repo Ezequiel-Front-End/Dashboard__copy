@@ -86,15 +86,8 @@ export class ModelService {
       .catch(error => console.log(error))
   }
 
-<<<<<<< HEAD
-  tratamento(){
-    this.recebetoken().then(e=>{
-      let obj = e
-      for (let y of obj) {
-          console.log(y);      
-      }
-    })
-=======
+
+
 
   ICadastroAAI(cadastro: any) {
     cadastro.forEach((item: any) => {
@@ -110,8 +103,8 @@ export class ModelService {
   }
 
 
-  /*********** REQUISIÇÃO - CADASTRO CLIENTE ***********/
-  cadastroCliente() {
+
+async  cadastroCliente() {
 
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
@@ -131,30 +124,70 @@ export class ModelService {
       redirect: 'follow'
     }
 
-    return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-      .then(resp => resp.json())
-      .then(x => this.ICadastroCliente(x))
-      .catch(error => console.log(error))
-  }
+      // return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+      // .then(resp=> resp.json())
+      // .then(x => this.ICadastroCliente(x))
+      // .catch(error => console.log(error))
+
+      let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions);
+      let dados = await api.json();
+      let get = await dados
+      let a = this.ICadastroCliente(get);
+      return a; 
+
+
+      
+      
+    
+}
+
+
+
+
+
 
 
   ICadastroCliente(cadastro: any) {
-    cadastro.forEach((item: any) => {
-      let i = new CadastroCliente();
-      i.data = {
-        dataRegistro: item.data["slt_00001"],
-        nomeCompleto: item.data["ipt_00002"],
-        telefone: item.data["ipt_00003"],
-        email: item.data["ipt_00004"],
-        codigoCorretora: item.data["ipt_00005"]
-      };
-
-      //console.log(i.data);
-    });
+   
+   
+    let lista = [];
+   
+    for (let index = 0; index < cadastro.length; index++) {
+    
+    let i = new CadastroCliente();
+    i.data = {
+      dataRegistro: cadastro[index]['data']["slt_00001"],
+      nomeCompleto: cadastro[index]['data']["ipt_00002"],
+      telefone: cadastro[index]['data']["ipt_00003"],
+      email: cadastro[index]['data']["ipt_00004"],
+      codigoCorretora: cadastro[index]['data']["ipt_00005"],
+    };
+    
+   lista.push(i)
+  
+   }
+// console.log(lista);
+return lista;
   }
 
 
-  /*********** REQUISIÇÃO - CADASTRO SETOR ***********/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   cadastroSetor() {
 
     let token = localStorage.getItem("token")
@@ -190,12 +223,11 @@ export class ModelService {
         nomeSetor: item.data["ipt_00002"]
       };
 
-      // console.log(i.data);
+       //console.log(i.data);
     });
   }
 
 
-  /*********** REQUISIÇÃO - CADASTRO TICKER ***********/
   cadastroTicker() {
 
     let token = localStorage.getItem("token")
@@ -238,12 +270,11 @@ export class ModelService {
         empresa: item.data.ipt_00003,
         ticker: item.data.ipt_00002
       };
-      console.log(i.data);
+      // console.log(i.data);
     });
   }
 
 
-  /*********** REQUISIÇÃO - PROCESSO RENDA VARIÁVEL ***********/
   processoRendaVariavel() {
 
     let token = localStorage.getItem("token")
@@ -342,11 +373,12 @@ export class ModelService {
     });
    //console.log(cadastro[1]);
 
->>>>>>> f69f17bf704d2ece1db1dd5d900d395c743885bb
+
   }
-
-
 }
+
+
+
 
 
 
