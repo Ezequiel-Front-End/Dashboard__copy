@@ -5,8 +5,6 @@ interface SideNavToggle {
   collapsed: boolean;
 }
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,8 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  
 
   title = 'Dashboard';
 

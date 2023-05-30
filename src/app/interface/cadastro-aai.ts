@@ -1,26 +1,11 @@
-export interface CadastroAAI {
+export class CadastroAAI {
 
-    "data": {
-
-        "dataRegistro": string,
-        "codigoCorretora": string,
-        "nomeCompleto": string
-
-    }
-
-}
-
-function aai(params: any) {
-    let processo: CadastroAAI = {
+    data: {
         
-        data: {
+        nomeCompleto: string;
+        codigoCorretora: string;
+        dataRegistro: string;
 
-            dataRegistro: "abc",
-            codigoCorretora: "abc",
-            nomeCompleto: "abc"
-
-        }
-
-    }
-
-}
+    } | undefined;
+  }
+  

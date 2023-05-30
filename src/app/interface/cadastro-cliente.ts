@@ -1,23 +1,13 @@
-export interface cadastroCliente {
+export class CadastroCliente {
 
-    "data": {
+    data: {
 
-        "email": string,
-        "telefone": string,
-        "nome": string
-        
-    }
+        dataRegistro: string;
+        nomeCompleto: string;
+        telefone: string;
+        email: string;
+        codigoCorretora: number;
 
-}
-function cliente(params:any) {
-    let processo: cadastroCliente = {
+    } | undefined;
 
-        data: {
-
-            email: "abc",
-            telefone: "abc",
-            nome: "abc"
-            
-        }
-    }
 }

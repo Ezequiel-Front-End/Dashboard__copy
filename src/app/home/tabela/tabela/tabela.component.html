@@ -13,8 +13,13 @@
     <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
+<<<<<<< HEAD
       <th matInput mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+=======
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Data de Registro</th>
+      <td mat-cell *matCellDef="let element"> {{element.slt_00001}} </td>
+>>>>>>> f69f17bf704d2ece1db1dd5d900d395c743885bb
     </ng-container>
 
     <ng-container matColumnDef="name">
@@ -27,13 +32,24 @@
       <td mat-cell *matCellDef="let element"> {{element.data.ipt_00004}} </td>
     </ng-container>
   
+<<<<<<< HEAD
     
       
   
       
+=======
+    <ng-container matColumnDef="codigoCorretora">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Codigo da Corretora<th>
+        <td mat-cell *matCellDef="let element"> {{element.data.ipt_00002}} </td>
+      </ng-container>
+      
+  
+      <ng-container matColumnDef="nomeCompleto">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Nome Completo</th>
+        <td mat-cell *matCellDef="let element"> {{element.data.ipt_00003}} </td>
+      </ng-container>
+>>>>>>> f69f17bf704d2ece1db1dd5d900d395c743885bb
 
-     
-    
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
