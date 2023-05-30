@@ -229,7 +229,7 @@ export class ModelService {
         empresa: item.data.ipt_00003,
         ticker: item.data.ipt_00002
       };
-      // console.log(i.data);
+      console.log(i.data);
     });
   }
 
@@ -264,98 +264,78 @@ export class ModelService {
 
   IProcessoRendaVariavel(cadastro: any) {
     cadastro.forEach((item: any) => {
-      let i = new CadastroTicker();
+      let i = new ProcessoRendaVariavel();
       i.data = {
-    // ctn_07
-    i.dataTemplate: {
+        dataTemplate: {
+          template: [
+            {
 
-      template: [
-
-          {
               ticker: {
-                  value: string;
-                  label: string;
-              };
+                value: item.data.slt_00001?.value || '',
+                label: item.data.slt_00001?.label || ''
+              },
 
-
-              quantidade: number;
-              financeiroCompra: number;
-              financeiroAtual: number;
-              financeiro: number;
-
-              // observação
-              percentualInativo: string;
-              percentualAtivo: string;
+              quantidade: item.data.ipt_00001,
+              financeiroCompra: item.data.ipt_00002,
+              financeiroAtual: item.dataipt_00003,
+              financeiro: item.data.ipt_00004,
+              percentualInativo: item.data.ipt_00006,
+              percentualAtivo: item.data.ipt_00007,
 
               encerrado: {
+                value: item.data.slt_00002?.value || '',
+                label: item.data.slt_00002?.label || ''
+              },
 
-                  value: string;
-                  label: string;
+              dataEncerramento: item.data.slt_00003,
 
-              };
+            }
+          ]
+        },
+        dataTemplateOpcao: {
+          templateOpcao: [
+            {
 
-              dataEncerramento: null;
-              j_id: string;
-
-          }
-
-
-      ];
-  } | undefined;
-
-
-  // ctn_10
-  i.data.dataTemplateOpcao: {
-
-
-      templateOpcao: [
-
-          {
               ticker: {
-                  value: string;
-                  label: string;
-              };
+                value: item.data.slt_00001?.value || '',
+                label: item.data.slt_00001?.label || ''
+              },
 
-
-              quantidade: number;
-              financeiroCompra: number;
-              financeiroAtual: number;
-              strikeOpcao: number;
-
+              quantidade: item.data.ipt_00001,
+              financeiroCompra: item.data.ipt_00002,
+              financeiroAtual: item.data.ipt_00003,
+              strikeOpcao: item.data.ipt_00006,
 
               encerrado: {
-                  value: string;
-                  label: string;
-              };
+                value: item.data.slt_00002?.value || '',
+                label: item.data.slt_00002?.label || ''
+              },
 
+              dataEncerramento: item.data.slt_00003,
+              financeiro: item.data.ipt_00004,
+              percentualInativo: item.data.ipt_00005,
+              percentual: item.data.ipt_00009,
+            }
+          ],
 
-              dataEncerramento: null;
-              financeiro: number;
-              percentualInativo: string;
-              percentual: string;
+          encerrado: {
+            value: item.data.slt_00002?.value || '',
+            label: item.data.slt_00002?.label || ''
+          },
 
+          financeiroCompra: item.data.ipt_00002,
+          ticker: item.data.slt_00001?.value || ''
 
-              j_id: string;
-          }
+        }
 
-
-      ];
-
-      encerrado: {
-          value: string;
-          label: string;
       };
-
-      financeiroCompra: number;
-      ticker: string;
-
-  } | undefined
       console.log(i.data);
     });
+   //console.log(cadastro[1]);
+
   }
 
 }
-
 
 
 

@@ -29,7 +29,6 @@ export class ProcessoRendaVariavel {
                     };
 
                     dataEncerramento: null;
-                    j_id: string;
 
                 }
 
@@ -68,10 +67,7 @@ export class ProcessoRendaVariavel {
                     percentualInativo: string;
                     percentual: string;
 
-
-                    j_id: string;
                 }
-
 
             ];
 
