@@ -14,7 +14,7 @@ import { ModelService } from 'src/app/service/model.service';
 export class GraficoComponent implements OnInit {
 
   // valores dos graficos 
-  totalCliente: number = 120;
+  totalCliente: number = 100;
   totalEmprestimo: number = 90;
   totalDevolucoes: number = 10;
   totalRiscos: number = 40;

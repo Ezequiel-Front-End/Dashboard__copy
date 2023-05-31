@@ -30,12 +30,14 @@ export class TabelaComponent implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
 
+  
 
   constructor(private _service: ModelService) { }
 
   ngOnInit(): void {
 
       this._service.cadastroCliente().then((value)=>{
+      
       this.dataSource = new MatTableDataSource(value)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
