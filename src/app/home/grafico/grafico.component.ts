@@ -32,6 +32,8 @@ export class GraficoComponent implements OnInit {
     }
   };
 
+
+
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
