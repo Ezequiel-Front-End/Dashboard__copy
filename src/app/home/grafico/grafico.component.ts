@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
+import { ModelService } from 'src/app/service/model.service';
 
 
 @Component({
@@ -11,6 +12,21 @@ import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 })
 
 export class GraficoComponent implements OnInit {
+
+  // valores dos graficos 
+  totalCliente: number = 120;
+  totalEmprestimo: number = 90;
+  totalDevolucoes: number = 10;
+  totalRiscos: number = 40;
+  totalAtributos: number = 20;
+
+  constructor(private _service: ModelService) { }
+  ngOnInit(): void {
+    this._service.cadastroCliente().then((value)=>{
+    let a = value
+     this.totalCliente = a.length
+    })
+  }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -42,7 +58,7 @@ export class GraficoComponent implements OnInit {
         borderColor: [
           '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
         ],
-        data: [35, 45, 54, 45, 98],
+        data: [this.totalCliente, this.totalEmprestimo, this.totalDevolucoes, this.totalRiscos, this.totalAtributos],
         label: 'Resultado',
 
 
@@ -62,9 +78,6 @@ export class GraficoComponent implements OnInit {
   }
 
 
-  constructor() { }
-  ngOnInit(): void {
 
-  }
 
 }
