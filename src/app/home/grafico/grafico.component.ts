@@ -88,7 +88,7 @@ export class GraficoComponent implements OnInit {
         borderColor: [
           '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
         ],
-        data: [],
+        data: [100, 200, 300, 400, 500],
         label: 'Resultado',
       }
     ]

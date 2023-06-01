@@ -4,7 +4,6 @@ export class ProcessoRendaVariavel {
     }
     data: {
         // ctn_07
-        dataTemplate: {
 
             template: [
 
@@ -13,7 +12,6 @@ export class ProcessoRendaVariavel {
                         value: string;
                         label: string;
                     };
-
 
                     quantidade: number;
                     financeiroCompra: number;
@@ -32,17 +30,11 @@ export class ProcessoRendaVariavel {
                     };
 
                     dataEncerramento: null;
-
                 }
 
-
             ];
-        } | any;
-
 
         // ctn_10
-        dataTemplateOpcao: {
-
 
             templateOpcao: [
 
@@ -83,8 +75,7 @@ export class ProcessoRendaVariavel {
             ticker: string;
 
         } | any;
-    } | any
-}
+    } 
 
 /*function rendaVariavel(params: any) {
     let processo: ProcessoRendaVariavel = {
