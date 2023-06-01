@@ -357,7 +357,7 @@ export class ModelService {
 
     };
 
-    console.log(lista);
+   
     return lista;
 
   }
