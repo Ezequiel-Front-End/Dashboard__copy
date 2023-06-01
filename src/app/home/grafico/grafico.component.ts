@@ -15,25 +15,17 @@ import { ModelService } from 'src/app/service/model.service';
 export class GraficoComponent implements OnInit {
 
   constructor(private _service: ModelService){
-  
-
     this.pieChartData.datasets[0].data[0] = 100
     this.pieChartData.datasets[0].data[1] = 200
     this.pieChartData.datasets[0].data[2] = 300
     this.pieChartData.datasets[0].data[3] = 400
-    this.pieChartData.datasets[0].data[4] = 500
-   
-  }
+    this.pieChartData.datasets[0].data[4] = 500   
+}
 
 
   ngOnInit(): void {
 
   }
-
-
-
-
-  
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 

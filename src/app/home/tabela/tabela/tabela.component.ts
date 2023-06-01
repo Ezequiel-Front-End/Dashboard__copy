@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { CadastroCliente } from 'src/app/interface/cadastro-cliente';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { event } from 'jquery';
 
 
 
@@ -36,23 +37,29 @@ export class TabelaComponent implements OnInit {
   constructor(private _service: ModelService) { }
 
   ngOnInit(): void { 
-
       this._service.cadastroCliente().then((value)=>{
-
       this.API = value
       this.dataSource = new MatTableDataSource(this.API)
-
-      
-      this.dataSource = new MatTableDataSource(value)
-
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
-      this.dataSource.filterPredicate = (data: CadastroCliente, filter: string)=>{
-        return true
-      };
+      this.dataSource.filterPredicate = function(data: CadastroCliente, filter: string){
+        console.log('chegou ate aqui viu');  
+        return data.data?.nomeCompleto.toLocaleLowerCase() == filter.toLocaleLowerCase()
+      
+      }
+      
     });
 
+  
+
   }
+
+  // primeira parte do filtro concluida com sucesso 
+
+   doFilter = (value: Event) => {
+    const filterValue = (value.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+}
 
 
     
@@ -67,4 +74,6 @@ export class TabelaComponent implements OnInit {
   
 
 
-  
+    // this.dataSource.filterPredicate = (data: CadastroCliente, filter: string)=>{
+    //   return true
+    // };
