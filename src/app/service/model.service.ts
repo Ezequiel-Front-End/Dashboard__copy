@@ -279,7 +279,6 @@ export class ModelService {
     return a;
   }
 
-
   IProcessoRendaVariavel(cadastro: any) {
     let lista = []
 
@@ -292,7 +291,7 @@ export class ModelService {
       for (let j = 0; j < cadastro[index].data.ctn_00007.length; j++) {
 
         i.data.template.push({
-          
+
           ticker: {
             value: cadastro[index].data.ctn_00007[j].slt_00001?.value || '',
             label: cadastro[index].data.ctn_00007[j].slt_00001?.label || ''
@@ -314,6 +313,7 @@ export class ModelService {
 
         });
       }
+
 
       // Percorre o array ctn_00010
       for (let k = 0; k < cadastro[index].data.ctn_00010.length; k++) {
@@ -351,16 +351,18 @@ export class ModelService {
         i.data.encerrado.ticker = cadastro[index].data.slt_00001?.value || ''
 
       // return i.data
-
-      //console.log(i.data)
       lista.push(i)
-
+      
     };
 
-   
-    return lista;
+    console.log(lista);
+    return lista
+
+    //return console.log(lista[0].template[0].quantidade);
 
   }
 
 }
 
+
+// reduce, some, map, filter, forEach 

@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     // this._service.cadastroSetor()
     // this._service.cadastroTicker()
 
-    this._service.processoRendaVariavel()
+    //this._service.processoRendaVariavel()
   
   }
 

@@ -14,6 +14,7 @@ import { ModelService } from 'src/app/service/model.service';
 
 export class GraficoComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private _service: ModelService){
     this.pieChartData.datasets[0].data[0] = 100
     this.pieChartData.datasets[0].data[1] = 200
@@ -21,9 +22,34 @@ export class GraficoComponent implements OnInit {
     this.pieChartData.datasets[0].data[3] = 400
     this.pieChartData.datasets[0].data[4] = 500   
 }
+=======
+  dados: number = 0
+
+
+  constructor(private _service: ModelService){}
+>>>>>>> 6091be2a5cad97ebb9c7fb7f2461bf5c0d00ffae
 
 
   ngOnInit(): void {
+
+      this._service.processoRendaVariavel().then((valor)=>{
+
+      this.dados = valor.length
+
+
+      this.pieChartData.datasets[0].data[0] = this.dados
+
+      this.pieChartData.datasets[0].data[1] = 800
+      this.pieChartData.datasets[0].data[2] = 900
+      this.pieChartData.datasets[0].data[3] = 700
+      this.pieChartData.datasets[0].data[4] = 600
+
+      this.chart?.update();
+
+    })
+
+    console.log(this.dados)
+      
 
   }
 
@@ -47,7 +73,10 @@ export class GraficoComponent implements OnInit {
     }
   };
 
-  
+
+
+
+
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
@@ -58,11 +87,20 @@ export class GraficoComponent implements OnInit {
         borderColor: [
           '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
         ],
+
         data: [],
+
+
         label: 'Resultado',
       }
     ]
   };
+
+
+
+
+
+
 
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DatalabelsPlugin];
