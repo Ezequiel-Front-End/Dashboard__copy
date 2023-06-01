@@ -38,13 +38,13 @@ export class TabelaComponent implements OnInit {
   ngOnInit(): void { 
 
       this._service.cadastroCliente().then((value)=>{
-<<<<<<< HEAD
+
       this.API = value
       this.dataSource = new MatTableDataSource(this.API)
-=======
+
       
       this.dataSource = new MatTableDataSource(value)
->>>>>>> 4b17d28f497035f40c73203d1135af823d08249e
+
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
       this.dataSource.filterPredicate = (data: CadastroCliente, filter: string)=>{

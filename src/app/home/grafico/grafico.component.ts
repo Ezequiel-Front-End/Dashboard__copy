@@ -14,48 +14,10 @@ import { ModelService } from 'src/app/service/model.service';
 
 export class GraficoComponent implements OnInit {
 
+  constructor(private _service: ModelService){}
+  ngOnInit(): void {
   
-
-  a: any;
-  b: any;
-  c: any;
-  d: any;
-  e: any;
-
-  constructor(private _service: ModelService) {} 
-
-  ngOnInit(): void {    
-    this.atribuirDados()    
-}
-
-
-
-  atribuirDados(){
-
-      let jasmine =  this._service.cadastroCliente().then((e)=>{
-      let primeiroValor = e.length
-      let segundoValor = 400
-      let terceiroValor = 300
-      let quartoValor = 200
-      let quintoValor = 100
-
-      
-      this.a = this.pieChartData.datasets[0].data[0] = primeiroValor
-      this.b = this.pieChartData.datasets[0].data[1] = segundoValor
-      this.c = this.pieChartData.datasets[0].data[2] = terceiroValor
-      this.d =  this.pieChartData.datasets[0].data[3] = quartoValor
-      this.e = this.pieChartData.datasets[0].data[4] = quintoValor
-
-      let array = this.pieChartData.datasets[0].data
-  
-})    
-    return jasmine
-    
-}
-
-
-
-
+  }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -105,8 +67,5 @@ export class GraficoComponent implements OnInit {
   public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
     console.log(event, active);
   }
-
-
-
 
 }
