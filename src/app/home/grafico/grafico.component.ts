@@ -3,7 +3,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ModelService } from 'src/app/service/model.service';
-
+import {  } from "module";
 
 @Component({
   selector: 'app-grafico',
@@ -14,17 +14,15 @@ import { ModelService } from 'src/app/service/model.service';
 export class GraficoComponent implements OnInit {
 
   // valores dos graficos 
-  totalCliente: number = 100;
-  totalEmprestimo: number = 90;
+  financeiroCompra: number = 90;
   totalDevolucoes: number = 10;
-  totalRiscos: number = 40;
-  totalAtributos: number = 20;
+  financeiro: number = 40;
+
 
   constructor(private _service: ModelService) { }
   ngOnInit(): void {
-    this._service.cadastroCliente().then((value)=>{
-    let a = value
-     this.totalCliente = a.length
+    this._service.processoRendaVariavel() => {
+
     })
   }
 
@@ -60,7 +58,7 @@ export class GraficoComponent implements OnInit {
         borderColor: [
           '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
         ],
-        data: [this.totalCliente, this.totalEmprestimo, this.totalDevolucoes, this.totalRiscos, this.totalAtributos],
+        data: [this.financeiroCompra, this.totalDevolucoes, this.financeiro],
         label: 'Resultado',
 
 
@@ -78,8 +76,5 @@ export class GraficoComponent implements OnInit {
   public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
     console.log(event, active);
   }
-
-
-
 
 }

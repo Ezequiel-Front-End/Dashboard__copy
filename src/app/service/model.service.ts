@@ -90,9 +90,9 @@ export class ModelService {
 
 
   ICadastroAAI(cadastro: any) {
-    cadastro.forEach((item: any) => {
-      let i = new CadastroAAI();
-      i.data = {
+    cadastro.forEach((item: any) => { // realizando um loop sobre cada item do array cadastro
+      let i = new CadastroAAI(); // criando uma nova instancia da classe e a armazena na variavel i 
+      i.data = { // são atribuidos valores as propriedades do objeto i.data com base nos valores do objeto item
         nomeCompleto: item.data["ipt_00002"],
         codigoCorretora: item.data["ipt_00004"],
         dataRegistro: item.data["slt_00001"],
@@ -248,8 +248,7 @@ export class ModelService {
   }
 
 
-  processoRendaVariavel() {
-
+  async processoRendaVariavel() {
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
     myheaders.append("Authorization", `Bearer ${token}`);
@@ -268,86 +267,100 @@ export class ModelService {
       redirect: 'follow'
     }
 
-    return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-      .then(resp => resp.json())
-      .then(x => this.IProcessoRendaVariavel(x))
-      .catch(error => console.log(error))
+    // return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+    //   .then(resp => resp.json())
+    //   .then(x => this.IProcessoRendaVariavel(x))
+    //   .catch(error => console.log(error))
+
+    let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+    let dados = await api.json();
+    let get = await dados
+    let a = this.IProcessoRendaVariavel(get);
+    return a;
   }
 
 
   IProcessoRendaVariavel(cadastro: any) {
-    cadastro.forEach((item: any) => {
-      let i = new ProcessoRendaVariavel();
+    let lista = []
 
+    for (let index = 0; index < cadastro.length; index++) {
+      let i = new ProcessoRendaVariavel();
 
       i.data = { template: [], templateOpcao: [] } // inicializando os template (ctn_00007) e o template opção (ctn_00010)
 
       // Percorre o array ctn_00007
-      for (let j = 0; j < item.data.ctn_00007.length; j++) {
+      for (let j = 0; j < cadastro[index].data.ctn_00007.length; j++) {
 
         i.data.template.push({
-
+          
           ticker: {
-            value: item.data.ctn_00007[j].slt_00001?.value || '',
-            label: item.data.ctn_00007[j].slt_00001?.label || ''
+            value: cadastro[index].data.ctn_00007[j].slt_00001?.value || '',
+            label: cadastro[index].data.ctn_00007[j].slt_00001?.label || ''
           },
 
-          quantidade: item.data.ctn_00007[j].ipt_00001,
-          financeiroCompra: item.data.ctn_00007[j].ipt_00002,
-          financeiroAtual: item.data.ctn_00007[j].ipt_00003,
-          financeiro: item.data.ctn_00007[j].ipt_00004,
-          percentualInativo: item.data.ctn_00007[j].ipt_00006,
-          percentualAtivo: item.data.ctn_00007[j].ipt_00007,
+          quantidade: cadastro[index].data.ctn_00007[j].ipt_00001,
+          financeiroCompra: cadastro[index].data.ctn_00007[j].ipt_00002,
+          financeiroAtual: cadastro[index].data.ctn_00007[j].ipt_00003,
+          financeiro: cadastro[index].data.ctn_00007[j].ipt_00004,
+          percentualInativo: cadastro[index].data.ctn_00007[j].ipt_00006,
+          percentualAtivo: cadastro[index].data.ctn_00007[j].ipt_00007,
 
           encerrado: {
-            value: item.data.ctn_00007[j].slt_00002?.value || '',
-            label: item.data.ctn_00007[j].slt_00002?.label || ''
+            value: cadastro[index].data.ctn_00007[j].slt_00002?.value || '',
+            label: cadastro[index].data.ctn_00007[j].slt_00002?.label || ''
           },
 
-          dataEncerramento: item.data.ctn_00007[j].slt_00003,
+          dataEncerramento: cadastro[index].data.ctn_00007[j].slt_00003,
 
         });
       }
 
       // Percorre o array ctn_00010
-      for (let k = 0; k < item.data.ctn_00010.length; k++) {
+      for (let k = 0; k < cadastro[index].data.ctn_00010.length; k++) {
 
         i.data.templateOpcao.push({
 
           ticker: {
-            value: item.data.ctn_00010[k].slt_00001?.value || '',
-            label: item.data.ctn_00010[k].slt_00001?.label || ''
+            value: cadastro[index].data.ctn_00010[k].slt_00001?.value || '',
+            label: cadastro[index].data.ctn_00010[k].slt_00001?.label || ''
           },
 
-          quantidade: item.data.ctn_00010[k].ipt_00001,
-          financeiroCompra: item.data.ctn_00010[k].ipt_00002,
-          financeiroAtual: item.data.ctn_00010[k].ipt_00003,
-          strikeOpcao: item.data.ctn_00010[k].ipt_00006,
+          quantidade: cadastro[index].data.ctn_00010[k].ipt_00001,
+          financeiroCompra: cadastro[index].data.ctn_00010[k].ipt_00002,
+          financeiroAtual: cadastro[index].data.ctn_00010[k].ipt_00003,
+          strikeOpcao: cadastro[index].data.ctn_00010[k].ipt_00006,
 
           encerrado: {
-            value: item.data.ctn_00010[k].slt_00002?.value || '',
-            label: item.data.ctn_00010[k].slt_00002?.label || ''
+            value: cadastro[index].data.ctn_00010[k].slt_00002?.value || '',
+            label: cadastro[index].data.ctn_00010[k].slt_00002?.label || ''
           },
 
-          dataEncerramento: item.data.ctn_00010[k].slt_00003,
-          financeiro: item.data.ctn_00010[k].ipt_00004,
-          percentualInativo: item.data.ctn_00010[k].ipt_00005,
-          percentual: item.data.ctn_00010[k].ipt_00009,
+          dataEncerramento: cadastro[index].data.ctn_00010[k].slt_00003,
+          financeiro: cadastro[index].data.ctn_00010[k].ipt_00004,
+          percentualInativo: cadastro[index].data.ctn_00010[k].ipt_00005,
+          percentual: cadastro[index].data.ctn_00010[k].ipt_00009,
         });
       }
 
       i.data.encerrado = {
-        value: item.data.slt_00002?.value || '',
-        label: item.data.slt_00002?.label || ''
+        value: cadastro[index].data.slt_00002?.value || '',
+        label: cadastro[index].data.slt_00002?.label || ''
       },
 
-        i.data.encerrado.financeiroCompra = item.data.ipt_00002,
-        i.data.encerrado.ticker = item.data.slt_00001?.value || ''
+        i.data.encerrado.financeiroCompra = cadastro[index].data.ipt_00002,
+        i.data.encerrado.ticker = cadastro[index].data.slt_00001?.value || ''
 
+      // return i.data
 
-      console.log(i.data)
-    });
-    //console.log(cadastro[1]);
+      //console.log(i.data)
+      lista.push(i)
+
+    };
+
+    console.log(lista);
+    return lista;
+
   }
 
 }
+
