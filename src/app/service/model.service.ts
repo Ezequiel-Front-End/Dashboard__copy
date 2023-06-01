@@ -16,24 +16,6 @@ export class ModelService {
 
   constructor(private http: HttpClient) { }
 
-
-  getApi() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/photos');
-  }
-
-  getUsers() {
-    return this.http.get<Dados[]>('https://jsonplaceholder.typicode.com/users');
-  }
-
-  getAll() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/todos');
-  }
-
-  getAllPost() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/posts');
-  }
-
-
   /*********** REQUISIÇÃO - TOKEN ***********/
   gerarToken() {
 
@@ -104,7 +86,7 @@ export class ModelService {
 
 
 
-async  cadastroCliente() {
+async cadastroCliente() {
 
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
@@ -134,16 +116,9 @@ async  cadastroCliente() {
       let get = await dados
       let a = this.ICadastroCliente(get);
       return a; 
-
-
-      
-      
+   
     
 }
-
-
-
-
 
 
 
@@ -170,24 +145,6 @@ async  cadastroCliente() {
 return lista;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   cadastroSetor() {
 
     let token = localStorage.getItem("token")
@@ -275,8 +232,9 @@ return lista;
   }
 
 
-  processoRendaVariavel() {
 
+  processoRendaVariavel() {
+    
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
     myheaders.append("Authorization", `Bearer ${token}`);
@@ -295,11 +253,18 @@ return lista;
       redirect: 'follow'
     }
 
+
+
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.IProcessoRendaVariavel(x))
       .catch(error => console.log(error))
+
+
+
   }
+
+
 
 
   IProcessoRendaVariavel(cadastro: any) {
@@ -369,12 +334,17 @@ return lista;
         }
 
       };
-      console.log(i.data);
+      return i.data
+      
+      
     });
    //console.log(cadastro[1]);
 
 
   }
+
+
+  
 }
 
 

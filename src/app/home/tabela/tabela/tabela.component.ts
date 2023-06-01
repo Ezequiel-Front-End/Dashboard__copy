@@ -8,7 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { CadastroCliente } from 'src/app/interface/cadastro-cliente';
-import { DataSource } from '@angular/cdk/collections';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 
@@ -19,13 +19,14 @@ import { DataSource } from '@angular/cdk/collections';
 })
 
 export class TabelaComponent implements OnInit {
+     
+  term: string = ''
+  API: any;
 
-
-
-
+  
 
   displayedColumns = ['nomeCompleto', 'email', 'telefone']
-  dataSource!: MatTableDataSource<any>;
+  dataSource!: MatTableDataSource<CadastroCliente>;
   // list:  CadastroCliente[] = [];
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
@@ -33,21 +34,23 @@ export class TabelaComponent implements OnInit {
 
   constructor(private _service: ModelService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
       this._service.cadastroCliente().then((value)=>{
-      this.dataSource = new MatTableDataSource(value)
+      this.API = value
+      this.dataSource = new MatTableDataSource(this.API)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
-    
+      this.dataSource.filterPredicate = (data: CadastroCliente, filter: string)=>{
+        return true
+      };
     });
 
   }
 
-  Filterchange(data: Event){
-    const inputValue = (data.target as HTMLInputElement).value
-    console.log(inputValue)
-    this.dataSource.filter = inputValue
+
+    
+   
   }
   // On input focus: setup filterPredicate to only filter by input column
 
@@ -55,7 +58,7 @@ export class TabelaComponent implements OnInit {
     // filterValue = filterValue.trim(); // Remove whitespace
     // filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     // this.dataSource.filter = filterValue;
-  }
+  
 
 
   

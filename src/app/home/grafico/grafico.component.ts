@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ModelService } from 'src/app/service/model.service';
+
 
 
 @Component({
@@ -13,20 +14,48 @@ import { ModelService } from 'src/app/service/model.service';
 
 export class GraficoComponent implements OnInit {
 
-  // valores dos graficos 
-  totalCliente: number = 120;
-  totalEmprestimo: number = 90;
-  totalDevolucoes: number = 10;
-  totalRiscos: number = 40;
-  totalAtributos: number = 20;
+  
 
-  constructor(private _service: ModelService) { }
-  ngOnInit(): void {
-    this._service.cadastroCliente().then((value)=>{
-    let a = value
-     this.totalCliente = a.length
-    })
-  }
+  a: any;
+  b: any;
+  c: any;
+  d: any;
+  e: any;
+
+  constructor(private _service: ModelService) {} 
+
+  ngOnInit(): void {    
+    this.atribuirDados()    
+}
+
+
+
+  atribuirDados(){
+
+      let jasmine =  this._service.cadastroCliente().then((e)=>{
+      let primeiroValor = e.length
+      let segundoValor = 400
+      let terceiroValor = 300
+      let quartoValor = 200
+      let quintoValor = 100
+
+      
+      this.a = this.pieChartData.datasets[0].data[0] = primeiroValor
+      this.b = this.pieChartData.datasets[0].data[1] = segundoValor
+      this.c = this.pieChartData.datasets[0].data[2] = terceiroValor
+      this.d =  this.pieChartData.datasets[0].data[3] = quartoValor
+      this.e = this.pieChartData.datasets[0].data[4] = quintoValor
+
+      let array = this.pieChartData.datasets[0].data
+  
+})    
+    return jasmine
+    
+}
+
+
+
+
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -48,6 +77,7 @@ export class GraficoComponent implements OnInit {
     }
   };
 
+  
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
@@ -58,13 +88,12 @@ export class GraficoComponent implements OnInit {
         borderColor: [
           '#AC58FA', '#2E64FE', '#00CED1', '#FFBF00', '#819FF7'
         ],
-        data: [this.totalCliente, this.totalEmprestimo, this.totalDevolucoes, this.totalRiscos, this.totalAtributos],
+        data: [],
         label: 'Resultado',
-
-
       }
     ]
   };
+
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DatalabelsPlugin];
 

@@ -4,7 +4,7 @@
   <h3 class="heading">Próximos Vencimentos</h3>
 <div class="search-container">
     <mat-form-field appearance="fill">
-      <input matInput (keyup)="Filterchange($event)" placeholder="Buscar Informações" autocomplete="off" #input > 
+      <input matInput [(ngModel)]="term"  placeholder="Buscar Informações" autocomplete="off" #input > 
     </mat-form-field>
 
     <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">

@@ -7,7 +7,10 @@
 
             <div class="info">
                 <span>Total Clientes Escritório</span>
-                <p></p>
+                <p *ngIf="resultado">{{totalClient}}</p>
+                <div *ngIf="spinner" class="spinner" style="height: 20px; width: 20px; margin-top: 0.50rem;">
+                    <mat-spinner style="height: 20px; width: 20px;"></mat-spinner>
+                </div>
             </div>
         </div>
         <div class="card__user__cliente">
@@ -16,7 +19,10 @@
             </div>
             <div class="info">
                 <span>Clientes de Mesa</span>
-                <p>{{totalClient}}</p>
+                <p *ngIf="resultado">{{totalClient}}</p>
+                <div *ngIf="spinner" class="spinner" style="height: 20px; width: 20px; margin-top: 0.50rem;">
+                    <mat-spinner style="height: 20px; width: 20px;"></mat-spinner>
+                </div>
             </div>
         </div>
         <div class="card__user__cliente">
@@ -26,7 +32,10 @@
 
             <div class="info">
                 <span>Clientes Taylor Made</span>
-                <p></p>
+                <p *ngIf="resultado">{{totalClient}}</p>
+                <div *ngIf="spinner" class="spinner" style="height: 20px; width: 20px; margin-top: 0.50rem;">
+                    <mat-spinner style="height: 20px; width: 20px;"></mat-spinner>
+                </div>
             </div>
         </div>
         <div class="card__user__cliente">
@@ -35,7 +44,10 @@
             </div>
             <div class="info">
                 <span>Clientes Novos Mês</span>
-                <p></p>
+                <p *ngIf="resultado">{{totalClient}}</p>
+                <div *ngIf="spinner" class="spinner" style="height: 20px; width: 20px; margin-top: 0.50rem;">
+                    <mat-spinner style="height: 20px; width: 20px;"></mat-spinner>
+                </div>
             </div>
         </div>
 
@@ -46,7 +58,7 @@
 
             <div class="info">
                 <span>Histórico de Dados</span>
-                <p></p>
+                <p>{{totalHistoricoDados}}</p>
             </div>
         </div>
 
@@ -57,7 +69,7 @@
 
             <div class="info">
                 <span>Caixa Disponível</span>
-                <p></p>
+                <p>{{totalCaixaDisponivel}}</p>
             </div>
         </div>
 
@@ -68,7 +80,7 @@
 
             <div class="info">
                 <span>P/L Mesa</span>
-                <p></p>
+                <p>{{totalPlMesa}}</p>
             </div>
         </div>
 
@@ -79,7 +91,7 @@
 
             <div class="info">
                 <span>P/L RV Escritório</span>
-                <p></p>
+                <p>{{totalPlRvEscritorio}}</p>
             </div>
         </div>
 
@@ -87,4 +99,5 @@
 
     </div>
 </div>
+
 

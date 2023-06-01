@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ModelService } from 'src/app/service/model.service';
 
 @Component({
@@ -8,15 +8,40 @@ import { ModelService } from 'src/app/service/model.service';
 })
 export class InventarioCardsInfoComponent implements OnInit {
 
-  totalClient: number = 0;
+  spinner: boolean = false
+  resultado: boolean = true
+
+
+
+  totalClient: any;
+
+
+
+  totalClientEscritorio: any;
+  totalClientTaylorMade: any;
+  totalClientNovosMes: any;
+  totalHistoricoDados: any;
+  totalCaixaDisponivel: any;
+  totalPlMesa: any;
+  totalPlRvEscritorio: any;
+
 
   constructor(private _service: ModelService) {}
   ngOnInit(): void {
-    
-    this._service.cadastroCliente().then((value)=>{
-      let a = value
-      this.totalClient = a.length
-}) 
+   this.totalClientFunction()
 }
-  
+
+
+totalClientFunction(){
+  this._service.cadastroCliente().then((value)=> {
+
+      this.totalClient = value.length
+
+      if(this.totalClient == '' ){
+        this.spinner = true
+        this.resultado = false
+      }
+  })
+}
+
 }

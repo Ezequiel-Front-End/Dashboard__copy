@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 
 // NG2 chart
@@ -44,6 +43,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule} from '@angular/material/input'
 import { MatPaginatorIntlPtBr } from './service/paginator-ptbr-i8n';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {DataTablesModule} from 'angular-datatables'
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -91,7 +95,10 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    DataTablesModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MatPaginatorIntl, useClass: MatPaginatorIntlPtBr}

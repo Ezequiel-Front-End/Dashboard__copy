@@ -1,4 +1,7 @@
 export class ProcessoRendaVariavel {
+    forEach(arg0: (item: any) => any) {
+      throw new Error('Method not implemented.');
+    }
     data: {
         // ctn_07
         dataTemplate: {
