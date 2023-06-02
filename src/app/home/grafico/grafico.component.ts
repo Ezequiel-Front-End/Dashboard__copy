@@ -4,8 +4,6 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ModelService } from 'src/app/service/model.service';
 
-
-
 @Component({
   selector: 'app-grafico',
   templateUrl: './grafico.component.html',
@@ -14,25 +12,17 @@ import { ModelService } from 'src/app/service/model.service';
 
 export class GraficoComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor(private _service: ModelService){
-    this.pieChartData.datasets[0].data[0] = 100
-    this.pieChartData.datasets[0].data[1] = 200
-    this.pieChartData.datasets[0].data[2] = 300
-    this.pieChartData.datasets[0].data[3] = 400
-    this.pieChartData.datasets[0].data[4] = 500   
-}
-=======
+
   dados: number = 0
 
 
   constructor(private _service: ModelService){}
->>>>>>> 6091be2a5cad97ebb9c7fb7f2461bf5c0d00ffae
+
 
 
   ngOnInit(): void {
 
-      this._service.processoRendaVariavel().then((valor)=>{
+      this._service.cadastroCliente().then((valor)=>{
 
       this.dados = valor.length
 
@@ -59,11 +49,14 @@ export class GraficoComponent implements OnInit {
     responsive: true,
     plugins: {
       legend: {
+        labels: {
+          color: 'black',
+        },
         display: true,
         position: 'top',
       },
       datalabels: {
-        color: 'white',
+        color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
