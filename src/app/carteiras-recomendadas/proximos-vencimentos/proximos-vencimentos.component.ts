@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { CadastroCliente } from 'src/app/interface/cadastro-cliente';
 import { Dados } from 'src/app/model/dados';
 import { ModelService } from 'src/app/service/model.service';
 
@@ -14,6 +15,7 @@ import { ModelService } from 'src/app/service/model.service';
 export class ProximosVencimentosComponent implements OnInit {
 
 
+  API: any
   
 
   displayedColumns = ['Nome Completo', 'E-mail', 'Telefone']
@@ -25,15 +27,21 @@ export class ProximosVencimentosComponent implements OnInit {
   constructor(private api: ModelService) {}
   ngOnInit(): void {
     this.api.cadastroCliente().then((value)=>{
-      this.dataSource = new MatTableDataSource((value));
+      this.API = value
+      this.dataSource = new MatTableDataSource(this.API);
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.matSort;
+
+      this.dataSource.filterPredicate = function(data: CadastroCliente, filter: string){
+        return data.data?.nomeCompleto.toLocaleLowerCase().indexOf(filter) != -1
+      }
   })
 }
 
 
-  filterData(pesquisar: any){
-    this.dataSource.filter = pesquisar.target.value
+  filterData(value: Event){
+    const filterValue = (value.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase()
 }
 
 }

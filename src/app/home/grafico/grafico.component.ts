@@ -14,7 +14,8 @@ import { ModelService } from 'src/app/service/model.service';
 
 export class GraficoComponent implements OnInit {
 
-<<<<<<< HEAD
+  dados: any;
+
   constructor(private _service: ModelService){
     this.pieChartData.datasets[0].data[0] = 100
     this.pieChartData.datasets[0].data[1] = 200
@@ -22,36 +23,28 @@ export class GraficoComponent implements OnInit {
     this.pieChartData.datasets[0].data[3] = 400
     this.pieChartData.datasets[0].data[4] = 500   
 }
-=======
-  dados: number = 0
-
-
-  constructor(private _service: ModelService){}
->>>>>>> 6091be2a5cad97ebb9c7fb7f2461bf5c0d00ffae
 
 
   ngOnInit(): void {
 
-      this._service.processoRendaVariavel().then((valor)=>{
+      this._service.cadastroCliente().then((valor: any)=>{
 
       this.dados = valor.length
+      
 
 
       this.pieChartData.datasets[0].data[0] = this.dados
 
-      this.pieChartData.datasets[0].data[1] = 800
-      this.pieChartData.datasets[0].data[2] = 900
-      this.pieChartData.datasets[0].data[3] = 700
-      this.pieChartData.datasets[0].data[4] = 600
+      this.pieChartData.datasets[0].data[1] = 200
+      this.pieChartData.datasets[0].data[2] = 300
+      this.pieChartData.datasets[0].data[3] = 400
+      this.pieChartData.datasets[0].data[4] = 500
 
       this.chart?.update();
 
     })
 
-    console.log(this.dados)
-      
-
-  }
+}
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -74,10 +67,7 @@ export class GraficoComponent implements OnInit {
   };
 
 
-
-
-
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
+public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
       {

@@ -21,6 +21,11 @@
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Telefone</th>
             <td mat-cell *matCellDef="let element"> {{element.data.telefone}} </td>
           </ng-container>
+
+          <tr *matNoDataRow class="alert">
+            <td class="mat-cell" colspan="4" >Dado não encontrado!</td>
+          </tr>
+         
     
          
         
