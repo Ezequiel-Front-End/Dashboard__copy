@@ -35,10 +35,35 @@ export class ModelService {
       redirect: 'follow'
     }
 
+<<<<<<< HEAD
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
       .then(resp => resp.json())
       .then(resultado => localStorage.setItem("token", resultado.access_token))
       .catch(Error => this.simpleAlert())
+=======
+
+  localStorage.clear()
+    return fetch("http://qas-ans.net:8080/jarvis/oauth/token", requestOptions)
+
+      .then(resp => {
+        if (!resp.ok) {
+          throw new Error("Erro na solicitação: " + resp.status);
+
+        }
+        return resp.json();
+
+      })
+      .then(resultado => {
+
+        localStorage.setItem("token", resultado.access_token);
+        // Outras ações com o resultado
+      })
+      .catch(error => {
+        console.log("Erro durante a solicitação:", error);
+        // Lidar com o erro de forma apropriada
+      });
+
+>>>>>>> 4237cf6420dc8f83861a2815ee7d37284c201cb0
   }
 
 
@@ -334,7 +359,7 @@ export class ModelService {
 
       // return i.data
       lista.push(i)
-      
+
     };
 
     return lista
