@@ -6,6 +6,7 @@ import { CadastroCliente } from '../interface/cadastro-cliente';
 import { CadastroSetor } from '../interface/cadastro-setor';
 import { CadastroTicker } from '../interface/cadastro-ticker';
 import { ProcessoRendaVariavel } from '../interface/processo-renda-variavel';
+import Swal from 'sweetalert2';
 
 
 
@@ -15,24 +16,6 @@ import { ProcessoRendaVariavel } from '../interface/processo-renda-variavel';
 export class ModelService {
 
   constructor(private http: HttpClient) { }
-
-
-  getApi() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/photos');
-  }
-
-  getUsers() {
-    return this.http.get<Dados[]>('https://jsonplaceholder.typicode.com/users');
-  }
-
-  getAll() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/todos');
-  }
-
-  getAllPost() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/posts');
-  }
-
 
   /*********** REQUISIÇÃO - TOKEN ***********/
   gerarToken() {
@@ -52,6 +35,12 @@ export class ModelService {
       redirect: 'follow'
     }
 
+<<<<<<< HEAD
+    return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
+      .then(resp => resp.json())
+      .then(resultado => localStorage.setItem("token", resultado.access_token))
+      .catch(Error => this.simpleAlert())
+=======
 
  
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
@@ -74,6 +63,7 @@ export class ModelService {
         // Lidar com o erro de forma apropriada
       });
 
+>>>>>>> 4237cf6420dc8f83861a2815ee7d37284c201cb0
   }
 
 
@@ -101,7 +91,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroAAI(x))
-      .catch(error => console.log(error))
+      .catch(error => this.simpleAlert())
   }
 
 
@@ -142,19 +132,20 @@ export class ModelService {
       redirect: 'follow'
     }
 
-    // return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-    // .then(resp=> resp.json())
-    // .then(x => this.ICadastroCliente(x))
-    // .catch(error => console.log(error))
-
-    let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions);
-    let dados = await api.json();
-    let get = await dados
-    let a = this.ICadastroCliente(get);
-    return a;
 
 
-  }
+      let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+      let dados = await api.json()
+      let get = await dados
+      let a = this.ICadastroCliente(get)
+      return a;
+     
+      
+    
+    
+}
+
+
 
   ICadastroCliente(cadastro: any) {
 
@@ -202,7 +193,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroSetor(x))
-      .catch(error => console.log(error))
+      .catch(error => this.simpleAlert())
   }
 
 
@@ -242,7 +233,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroTicker(x))
-      .catch(error => console.log(error))
+      .catch(error => this.simpleAlert())
   }
 
 
@@ -285,16 +276,14 @@ export class ModelService {
       redirect: 'follow'
     }
 
-    // return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-    //   .then(resp => resp.json())
-    //   .then(x => this.IProcessoRendaVariavel(x))
-    //   .catch(error => console.log(error))
-
     let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
     let dados = await api.json();
     let get = await dados
     let a = this.IProcessoRendaVariavel(get);
     return a;
+    
+  
+   
   }
 
   IProcessoRendaVariavel(cadastro: any) {
@@ -373,11 +362,20 @@ export class ModelService {
 
     };
 
-    console.log(lista);
     return lista
 
     //return console.log(lista[0].template[0].quantidade);
 
+  }
+
+
+
+  // tratament de erro 
+  simpleAlert(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Desculpe, servidor indisponível no momento'
+    })
   }
 
 }

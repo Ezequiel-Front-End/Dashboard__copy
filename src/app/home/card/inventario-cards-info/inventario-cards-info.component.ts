@@ -33,7 +33,7 @@ export class InventarioCardsInfoComponent implements OnInit {
 
 
 totalClientFunction(){
-  this._service.cadastroCliente().then((value)=> {
+  this._service.cadastroCliente().then((value: any)=> {
 
       this.totalClient = value.length
 

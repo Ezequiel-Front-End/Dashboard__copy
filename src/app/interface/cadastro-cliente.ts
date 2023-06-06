@@ -1,13 +1,17 @@
 export class CadastroCliente {
-    data: {
+    data: Cliente | any;
+
+}
+
+export class Cliente {
+    
         
         // id: String;
-        dataRegistro: string;
-        nomeCompleto: string;
-        telefone: string;
-        email: string;
-        codigoCorretora: number;
+        dataRegistro: string | undefined ;
+        nomeCompleto: string | undefined ;
+        telefone: string | undefined ;
+        email: string | undefined ;
+        codigoCorretora: number | undefined ;
 
-    } | undefined;
-
+    
 }
