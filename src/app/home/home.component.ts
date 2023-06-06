@@ -10,9 +10,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private _service: ModelService) { }
   ngOnInit(): void {
-    // this._service.gerarToken()
-     this._service.cadastroAAI()
-     //this._service.cadastroCliente() 
+     this._service.gerarToken()
+    // this._service.cadastroAAI()
+     this._service.cadastroCliente() 
     // this._service.cadastroSetor()
     // this._service.cadastroTicker()
 
