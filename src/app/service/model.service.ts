@@ -53,8 +53,8 @@ export class ModelService {
     }
 
 
-  localStorage.clear()
-    return fetch("http://qas-ans.net:8080/jarvis/oauth/token", requestOptions)
+ 
+    return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
 
       .then(resp => {
         if (!resp.ok) {
