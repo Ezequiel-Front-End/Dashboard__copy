@@ -34,36 +34,16 @@ export class ModelService {
       body: body,
       redirect: 'follow'
     }
-
-<<<<<<< HEAD
+   
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
       .then(resp => resp.json())
       .then(resultado => localStorage.setItem("token", resultado.access_token))
-      .catch(Error => this.simpleAlert())
-=======
-
- 
-    return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
-
-      .then(resp => {
-        if (!resp.ok) {
-          throw new Error("Erro na solicitação: " + resp.status);
-
-        }
-        return resp.json();
-
-      })
-      .then(resultado => {
-
-        localStorage.setItem("token", resultado.access_token);
-        // Outras ações com o resultado
-      })
       .catch(error => {
-        console.log("Erro durante a solicitação:", error);
-        // Lidar com o erro de forma apropriada
-      });
+        // Erro de autenticação 
+        console.log("Ocorreu um erro " + error);
+        this.simpleAlert()
 
->>>>>>> 4237cf6420dc8f83861a2815ee7d37284c201cb0
+      })
   }
 
 
@@ -91,7 +71,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroAAI(x))
-      .catch(error => this.simpleAlert())
+
   }
 
 
@@ -134,16 +114,16 @@ export class ModelService {
 
 
 
-      let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-      let dados = await api.json()
-      let get = await dados
-      let a = this.ICadastroCliente(get)
-      return a;
-     
-      
-    
-    
-}
+    let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+    let dados = await api.json()
+    let get = await dados
+    let a = this.ICadastroCliente(get)
+    return a;
+
+
+
+
+  }
 
 
 
@@ -193,7 +173,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroSetor(x))
-      .catch(error => this.simpleAlert())
+      
   }
 
 
@@ -281,9 +261,9 @@ export class ModelService {
     let get = await dados
     let a = this.IProcessoRendaVariavel(get);
     return a;
-    
-  
-   
+
+
+
   }
 
   IProcessoRendaVariavel(cadastro: any) {
@@ -371,14 +351,14 @@ export class ModelService {
 
 
   // tratament de erro 
-  simpleAlert(){
+  simpleAlert() {
     Swal.fire({
       icon: 'error',
-      title: 'Desculpe, servidor indisponível no momento'
+      title: 'Erro ao carregar os dados. Tente novamente.',
     })
   }
 
 }
 
 
-// reduce, some, map, filter, forEach 
+
