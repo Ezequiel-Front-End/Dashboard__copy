@@ -21,6 +21,7 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
         position: 'top',
       },
       datalabels: {
+          color: 'white',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -31,9 +32,9 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
   };
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['R$: 1.000.00'],
+    labels: ['Ações'],
     datasets: [ {
-      data: [ 300 ],
+      data: [ 1000 ],
       backgroundColor: '#008A16',
       borderWidth: 0
     } ]
@@ -52,48 +53,51 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
  
 
 
-
-
-
-   
-  //bar
-  public pieChartOptionsBar: ChartConfiguration['options'] = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      datalabels: {
+//bar => grafico de colunas
+public pieChartOptionsBar: ChartConfiguration['options'] = {
+  responsive: true,
+  plugins: {
+    legend: {
+      labels: {
         color: '#fff',
-        formatter: (value, ctx) => {
-          if (ctx.chart.data.labels) {
-            return ctx.chart.data.labels[ctx.dataIndex];
-          }
-        },
       },
-    }
-  };
+      display: false,
+      position: 'top',
+    },
+    datalabels: {
+      display: false,
+      formatter: (value, ctx) => {
+        if (ctx.chart.data.labels) {
+          return ctx.chart.data.labels[ctx.dataIndex];
+        }
+      },
+    },
+  }
+};
 
-  public pieChartDataBar: ChartData<'pie', number[], string | string[]> = {
-    labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
+
+
+public pieChartDataBar: ChartData<'bar', number[], string | string[]> = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
     datasets: [ {
-      data: [ 100, 200, 300, 400, 500 ],
-      backgroundColor: '#4472C4'
-    } ]
-  };
-  public pieChartTypeBar: ChartType = 'bar';
-  public pieChartPluginsBar = [ DatalabelsPlugin ];
+    data: [ 100, 200, 300, 400, 500, 600, 700 ],
+    backgroundColor: ['#4472C4']
+  },]
+}
 
-  // events
-  public chartView({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
 
-  public chartViewed({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
 
+public pieChartTypeBar: ChartType = 'bar';
+public pieChartPluginsBar = [ DatalabelsPlugin ];
+
+// events
+public chartView({ event, active }: { event: ChartEvent, active: {}[] }): void {
+  console.log(event, active);
+}
+
+public chartViewed({ event, active }: { event: ChartEvent, active: {}[] }): void {
+  console.log(event, active);
+}
 
 
   constructor() {}

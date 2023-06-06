@@ -23,6 +23,7 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
         position: 'top',
       },
       datalabels: {
+          color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -34,9 +35,9 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['R$: 1.000.00'],
+    labels: ['Ação'],
     datasets: [ {
-      data: [ 300 ],
+      data: [ 1000 ],
       backgroundColor: '#008A16',
       borderWidth: 0
     } ]
@@ -61,15 +62,14 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
     responsive: true,
     plugins: {
       legend: {
-        labels:{
-             color: '#fff'
+        labels: {
+          color: '#fff',
         },
         display: false,
         position: 'top',
       },
-      
       datalabels: {
-        color: '#fff',
+        display: false,
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -82,9 +82,9 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
 
 
   public pieChartDataBar: ChartData<'bar', number[], string | string[]> = {
-      labels: ['Ezequiel', 'jasmine', 'Fron-end', 'Back-end', 'Full-stack'],
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
       datasets: [ {
-      data: [ 100, 200, 300, 400, 500 ],
+      data: [ 100, 200, 300, 400, 500, 600, 700 ],
       backgroundColor: ['#4472C4']
     },]
   }

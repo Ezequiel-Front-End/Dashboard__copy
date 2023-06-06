@@ -4,8 +4,6 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ModelService } from 'src/app/service/model.service';
 
-
-
 @Component({
   selector: 'app-grafico',
   templateUrl: './grafico.component.html',
@@ -52,11 +50,14 @@ export class GraficoComponent implements OnInit {
     responsive: true,
     plugins: {
       legend: {
+        labels: {
+          color: 'black',
+        },
         display: true,
         position: 'top',
       },
       datalabels: {
-        color: 'white',
+        color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];

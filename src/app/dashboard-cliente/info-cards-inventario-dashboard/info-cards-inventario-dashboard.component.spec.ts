@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfoCardsInventarioDashboardComponent } from './info-cards-inventario-dashboard.component';
 
+
+
 describe('InfoCardsInventarioDashboardComponent', () => {
   let component: InfoCardsInventarioDashboardComponent;
   let fixture: ComponentFixture<InfoCardsInventarioDashboardComponent>;
