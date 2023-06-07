@@ -28,6 +28,7 @@ export class GraficoComponent implements OnInit {
       this._service.cadastroCliente().then((valor: any)=>{
 
       this.dados = valor.length
+      //console.log(valor);
       
 
 

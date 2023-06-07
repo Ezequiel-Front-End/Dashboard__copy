@@ -35,6 +35,7 @@ export class ModelService {
       redirect: 'follow'
     }
    
+    
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/oauth/token", requestOptions)
       .then(resp => resp.json())
       .then(resultado => localStorage.setItem("token", resultado.access_token))
@@ -53,7 +54,6 @@ export class ModelService {
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
     myheaders.append("Authorization", `Bearer ${token}`);
-    let url = new URLSearchParams();
     myheaders.append("X-stuff-code", "c-fin-asses-01");
     myheaders.append("Content-Type", "application/json");
 
