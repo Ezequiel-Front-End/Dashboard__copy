@@ -20,11 +20,17 @@ export class HistoricoDeCarteiraIbovComponent implements OnInit{
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
+    // We use these empty structures as placeholders for dynamic theming.   
     scales: {
-      x: {},
+      x: {
+        grid: {
+          display: false
+        }
+      },
       y: {
-        min: 10
+        grid: {
+          display: true
+        }
       }
     },
     plugins: {
@@ -33,23 +39,24 @@ export class HistoricoDeCarteiraIbovComponent implements OnInit{
       },
       datalabels: {
         anchor: 'end',
-        align: 'end'
+        align: 'end',
+        display: false, 
       }
-    }
+    },   
   };
-  public barChartType: ChartType = 'bar';
+  public barChartType: ChartType = 'line';
   public barChartPlugins = [
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
+  public barChartData: ChartData<'line'> = {
     labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'CLI', backgroundColor: '#4472C4' },
-      { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'IQL Ações Ativo', backgroundColor: '#191970' },
-      { data: [ 14, 59, 70, 20, 46, 55, 35 ], label: 'Ibovespa', backgroundColor: '#1E90FF' },
+      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'CLI', borderColor: '#BC0D15', backgroundColor: "#BC0D15", borderWidth: 2, pointStyle: false, pointBackgroundColor: "#BC0D15"},
+      { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'IQL Ações Ativo',  borderColor: '#56037D', backgroundColor: "#56037D",  borderWidth: 2, pointStyle: false, pointBackgroundColor: "#56037D"},
+      { data: [ 14, 59, 70, 10, 46, 55, 35 ], label: 'Ibovespa', borderColor: '#000000', backgroundColor: "#000000",  borderWidth: 2, pointStyle: false, pointBackgroundColor: "#000000"},
     ],
-    
+      
   };
 
   // events

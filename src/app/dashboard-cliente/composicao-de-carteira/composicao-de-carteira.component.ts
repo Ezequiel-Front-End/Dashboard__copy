@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { ModelService } from 'src/app/service/model.service';
 
 
 @Component({
@@ -9,7 +10,26 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './composicao-de-carteira.component.html',
   styleUrls: ['./composicao-de-carteira.component.scss']
 })
-export class ComposicaoDeCarteiraComponent implements OnInit{
+export class ComposicaoDeCarteiraComponent implements OnInit {
+
+  valorPie: any;
+
+
+  constructor(private _service: ModelService) {
+    this.pieChartData.datasets[0].data[0] = 100
+ 
+  }
+  
+  ngOnInit(): void {
+    this._service.processoRendaVariavel().then((value: any) => {
+
+      this.valorPie = value.length
+      console.log(value);
+
+
+
+    })
+  }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -23,7 +43,7 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
         position: 'top',
       },
       datalabels: {
-          color: '#fff',
+        color: '#fff',
         formatter: (value, ctx) => {
           if (ctx.chart.data.labels) {
             return ctx.chart.data.labels[ctx.dataIndex];
@@ -32,18 +52,18 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
       },
     }
   };
-  
+
 
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Ação'],
-    datasets: [ {
-      data: [ 1000 ],
+    datasets: [{
+      data: [1000],
       backgroundColor: '#008A16',
       borderWidth: 0
-    } ]
+    }]
   };
   public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [ DatalabelsPlugin ];
+  public pieChartPlugins = [DatalabelsPlugin];
 
   // events
   public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
@@ -56,7 +76,7 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
 
 
 
-  
+
   //bar => grafico de colunas
   public pieChartOptionsBar: ChartConfiguration['options'] = {
     responsive: true,
@@ -82,17 +102,17 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
 
 
   public pieChartDataBar: ChartData<'bar', number[], string | string[]> = {
-      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
-      datasets: [ {
-      data: [ 100, 200, 300, 400, 500, 600, 700 ],
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
+    datasets: [{
+      data: [100, 200, 300, 400, 500, 600, 700],
       backgroundColor: ['#4472C4']
     },]
   }
-  
-  
+
+
 
   public pieChartTypeBar: ChartType = 'bar';
-  public pieChartPluginsBar = [ DatalabelsPlugin ];
+  public pieChartPluginsBar = [DatalabelsPlugin];
 
   // events
   public chartView({ event, active }: { event: ChartEvent, active: {}[] }): void {
@@ -104,49 +124,10 @@ export class ComposicaoDeCarteiraComponent implements OnInit{
   }
 
 
-//   var config = {
-//     type: 'doughnut',
-//     data: {
-//         labels: [
-//           "Red",
-//           "Green",
-//           "Yellow"
-//         ],
-//         datasets: [{
-//             data: [300, 50, 100],
-//             backgroundColor: [
-//               "#FF6384",
-//               "#36A2EB",
-//               "#FFCE56"
-//             ],
-//             hoverBackgroundColor: [
-//               "#FF6384",
-//               "#36A2EB",
-//               "#FFCE56"
-//             ]
-//         }]
-//     },
-// options: {
-//     elements: {
-//         center: {
-//             text: '90,0 bi',
-//   color: '#FF6384', // Default is #000000
-//   fontStyle: 'Arial', // Default is Arial
-//   sidePadding: 20 // Defualt is 20 (as a percentage)
-//         }
-//     }
-// }
 
 
 
-  construcutor() {}
-  ngOnInit(): void {
-   
-  }
 
-
-  
-  
 }
 
 

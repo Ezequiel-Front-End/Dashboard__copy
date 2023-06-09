@@ -8,8 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { CadastroCliente } from 'src/app/interface/cadastro-cliente';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { event } from 'jquery';
+import Swal from 'sweetalert2';
 
 
 
@@ -21,14 +20,12 @@ import { event } from 'jquery';
 
 export class TabelaComponent implements OnInit {
      
-  term: string = ''
-  API: any;
 
+  API: any
   
 
-  displayedColumns = ['nomeCompleto', 'email', 'telefone']
-  dataSource!: MatTableDataSource<CadastroCliente>;
-  // list:  CadastroCliente[] = [];
+  displayedColumns = [ 'nomeCompleto', 'email', 'telefone']
+  dataSource!: MatTableDataSource<CadastroCliente>
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
 
@@ -37,34 +34,41 @@ export class TabelaComponent implements OnInit {
   constructor(private _service: ModelService) { }
 
   ngOnInit(): void { 
+
+
       this._service.cadastroCliente().then((value)=>{
       this.API = value
-      this.dataSource = new MatTableDataSource(this.API)
-      this.dataSource.paginator = this.paginator
+      this.dataSource = new MatTableDataSource(this.API)      
       this.dataSource.sort = this.matSort;
+      this.dataSource.paginator = this.paginator
       this.dataSource.filterPredicate = function(data: CadastroCliente, filter: string){
-        console.log('chegou ate aqui viu');  
-        return data.data?.nomeCompleto.toLocaleLowerCase() == filter.toLocaleLowerCase()
-      
-      }
-      
-    });
+    
+      return data.data?.nomeCompleto.toLocaleLowerCase().indexOf(filter) != -1;
+    }       
+});
+ 
 
-  
+}
 
-  }
+
 
   // primeira parte do filtro concluida com sucesso 
 
    doFilter = (value: Event) => {
     const filterValue = (value.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();    
 }
 
 
+// setupFilter(nomeCompleto: string){
+//   this.dataSource.filterPredicate = (data: CadastroCliente, filter: string) => {
+//     const textToSearch = data[nomeCompleto] && data[nomeCompleto].toLowerCase() || '';
+//     return textToSearch.indexOf(filter) !== -1;
+//   };
+// }
     
    
-  }
+}
   // On input focus: setup filterPredicate to only filter by input column
 
     
