@@ -36,11 +36,13 @@ export class HistoricoDeCarteiraIbovComponent implements OnInit{
     plugins: {
       legend: {
         display: true,
+        position: 'bottom'
       },
       datalabels: {
         anchor: 'end',
         align: 'end',
         display: false, 
+        
       }
     },   
   };

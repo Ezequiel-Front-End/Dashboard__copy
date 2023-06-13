@@ -22,12 +22,8 @@ export class ComposicaoDeCarteiraComponent implements OnInit {
   
   ngOnInit(): void {
     this._service.processoRendaVariavel().then((value: any) => {
-
       this.valorPie = value.length
       console.log(value);
-
-
-
     })
   }
 
@@ -80,6 +76,18 @@ export class ComposicaoDeCarteiraComponent implements OnInit {
   //bar => grafico de colunas
   public pieChartOptionsBar: ChartConfiguration['options'] = {
     responsive: true,
+    scales: {
+      x: {
+        grid: {
+          display: false
+        }
+      },
+      y: {
+        grid: {
+          display: true
+        }
+      }
+    },
     plugins: {
       legend: {
         labels: {

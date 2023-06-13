@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
@@ -9,32 +9,68 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './maximo-drawdown.component.html',
   styleUrls: ['./maximo-drawdown.component.scss']
 })
-export class MaximoDrawdownComponent implements OnInit{
+export class MaximoDrawdownComponent implements OnInit {
 
-  constructor(){}
+  constructor() { }
   ngOnInit(): void {
-   
+
   }
 
-  
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
-      x: {},
+      x: {
+        display: true,
+        grid: {
+          display: false
+        },
+
+      },
       y: {
-        min: 10
+        beginAtZero: true, // Começar o eixo a partir do zero
+        display: false,
+        grid: {
+          display: false
+        },
+        ticks: {
+          precision: 2, // Número de casas decimais exibidas
+          callback: (value: string | number) => {
+            const numericValue = typeof value === 'string' ? parseFloat(value) : value * 100;
+            return numericValue + '%'; // Adiciona o símbolo de porcentagem ao valor
+          }
+        }
+
+      },
+      yPercent: {
+        beginAtZero: true,
+        display: true,
+        grid: {
+          display: true
+        },
+        ticks: {
+          callback: (value: string | number) => {
+            const numericValue = typeof value === 'string' ? parseFloat(value) : value;
+            return numericValue + '%'; // Adiciona o símbolo de porcentagem ao valor
+          }
+        }
       }
     },
     plugins: {
       legend: {
         display: true,
+        position: 'bottom'
       },
       datalabels: {
+        display: false,
         anchor: 'end',
-        align: 'end'
+        align: 'end',
+        formatter: (value: number) => {
+          return value.toString() + '%';
+        }
       }
     }
   };
@@ -43,11 +79,30 @@ export class MaximoDrawdownComponent implements OnInit{
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
+  public barChartData: ChartData<'bar', number[], string | string[]> = {
+    labels: ['1997', '1999', '2001', '2003', '2005', '2007', '2009', '2011', '2013', '2015', '2017', '2019'],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A', backgroundColor: '#4472C4'},
-      { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B', backgroundColor: '#00008B' }
+      {
+        type: 'line',
+        label: 'Limite',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        borderColor: '#000000',
+        pointStyle: false,
+        borderWidth: 2,
+        pointBackgroundColor: '#000000',
+        backgroundColor: '#000000',
+        fill: false,
+        yAxisID: 'yPercent'
+      } as any,
+
+      {
+        type: 'bar',
+        label: 'Total',
+        data: [-90, -75, -50, 0, -25, 50, 75, 100, -75, -50, 0, -25],
+        backgroundColor: ['#4472C4'],
+        yAxisID: 'yPercent'
+      },
+
     ]
   };
 
@@ -69,7 +124,7 @@ export class MaximoDrawdownComponent implements OnInit{
       Math.round(Math.random() * 100),
       56,
       Math.round(Math.random() * 100),
-      40 ];
+      40];
 
     this.chart?.update();
   }

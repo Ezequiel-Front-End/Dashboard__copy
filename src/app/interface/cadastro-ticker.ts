@@ -15,6 +15,6 @@ export class CadastroTicker {
         empresa: string;
         ticker: string;
 
-    } | undefined;
+    } | any;
 
 }

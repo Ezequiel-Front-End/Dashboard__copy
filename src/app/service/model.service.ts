@@ -146,7 +146,8 @@ export class ModelService {
       lista.push(i)
 
     }
-    // console.log(lista);
+     //console.log(lista);
+     
     return lista;
   }
 
@@ -218,7 +219,7 @@ export class ModelService {
 
 
   ICadastroTicker(cadastro: any) {
-    cadastro.forEach((item: any) => {
+    cadastro = cadastro.map((item: any) => {
       let i = new CadastroTicker();
       i.data = {
         setor: {
@@ -232,8 +233,12 @@ export class ModelService {
         empresa: item.data.ipt_00003,
         ticker: item.data.ipt_00002
       };
-      //console.log(i.data);
+      return i
     });
+    //console.log(cadastro.find((element: { data: { ipt_00002: string; }; }) => element.data.ipt_00002 = 'FHER3' ))
+    //console.log(cadastro[0].data.ipt_00002);
+    //console.log(cadastro[0].data.slt_00002.label);
+    return cadastro;
   }
 
 
@@ -341,10 +346,10 @@ export class ModelService {
       lista.push(i)
 
     };
+    //console.log(lista[0]);
 
     return lista
 
-    //return console.log(lista[0].template[0].quantidade);
 
   }
 

@@ -3,6 +3,8 @@ import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ModelService } from 'src/app/service/model.service';
+import { ProcessoRendaVariavel } from 'src/app/interface/processo-renda-variavel';
+import { CadastroTicker } from 'src/app/interface/cadastro-ticker';
 
 @Component({
   selector: 'app-grafico',
@@ -14,22 +16,22 @@ export class GraficoComponent implements OnInit {
 
   dados: any;
 
-  constructor(private _service: ModelService){
+  constructor(private _service: ModelService) {
     this.pieChartData.datasets[0].data[0] = 100
     this.pieChartData.datasets[0].data[1] = 200
     this.pieChartData.datasets[0].data[2] = 300
     this.pieChartData.datasets[0].data[3] = 400
-    this.pieChartData.datasets[0].data[4] = 500   
-}
+    this.pieChartData.datasets[0].data[4] = 500
+  }
 
 
   ngOnInit(): void {
 
-      this._service.cadastroCliente().then((valor: any)=>{
+    this._service.cadastroCliente().then((valor: any) => {
 
       this.dados = valor.length
       //console.log(valor);
-      
+
 
 
       this.pieChartData.datasets[0].data[0] = this.dados
@@ -42,8 +44,43 @@ export class GraficoComponent implements OnInit {
       this.chart?.update();
 
     })
+    let arrayTickers: CadastroTicker[] = []
+    this._service.cadastroTicker().then(tickers => {
+      arrayTickers = tickers
 
-}
+
+      this._service.processoRendaVariavel().then((valor: ProcessoRendaVariavel[]) => {
+        let setorCount: any[] = [];
+        for (let i = 0; i < valor.length; i++) {
+
+          for (let j = 0; j < valor[i].data.template.length; j++) {
+
+            let found = arrayTickers.find((element: CadastroTicker) => element.data?.ticker == valor[i].data.template[j].ticker.label)
+
+            //console.log(found?.data?.setor);
+            let map = new Map()
+            if (found) {
+              let setor = found.data?.setor;
+              if (setor) {
+                setorCount.push(setor);
+              }
+            }
+          }
+        }
+        console.log(setorCount.map((element) => {
+          if (element.label == "Renda") {
+            console.log(element.label.length)
+          }
+
+        }))
+
+      })
+
+
+    })
+
+
+  }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -69,7 +106,7 @@ export class GraficoComponent implements OnInit {
   };
 
 
-public pieChartData: ChartData<'pie', number[], string | string[]> = {
+  public pieChartData: ChartData<'pie', number[], string | string[]> = {
     labels: ['Clientes', 'Empréstimos', 'Devoluções', 'Riscos', 'Atributos'],
     datasets: [
       {
