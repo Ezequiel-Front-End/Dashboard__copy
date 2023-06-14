@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     this._service.cadastroCliente()
     this._service.cadastroSetor()
     this._service.cadastroTicker()
-    this._service.cadastroTicker()
+
 
   }
 
