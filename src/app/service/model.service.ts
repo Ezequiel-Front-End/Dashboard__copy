@@ -348,7 +348,7 @@ export class ModelService {
 
 
 
-  // tratament de erro 
+  // tratament de erro
   simpleAlert() {
     Swal.fire({
       icon: 'error',

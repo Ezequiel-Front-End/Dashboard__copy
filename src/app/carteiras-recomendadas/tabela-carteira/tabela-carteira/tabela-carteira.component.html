@@ -1,7 +1,7 @@
 <div class="table__container">
     <h3 class="heading">Carteira</h3>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="Buscar Informações" autocomplete="off" (keyup)="filterData($event)"> 
+      <input matInput placeholder="Buscar por nome" autocomplete="off" (keyup)="filterData($event)"> 
     </mat-form-field>
 
     <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
