@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'Relatório de Performance', component: RelatorioDePerformanceComponent},
   {path: 'Treinamento', component: TreinamentoComponent},
   {path: 'Exit', component: ExitComponent}
+
   
 ];
 

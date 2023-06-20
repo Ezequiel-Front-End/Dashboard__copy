@@ -56,13 +56,35 @@ export class FundosImobiliariosGraficoComponent implements OnInit{
 //bar => grafico de colunas
 public pieChartOptionsBar: ChartConfiguration['options'] = {
   responsive: true,
+  scales: {
+    x: {
+      display: true,
+      grid: {
+        display: false
+      }
+    },
+    y: {
+      beginAtZero: true, // Começar o eixo a partir do zero
+      display: false,
+      grid: {
+        display: false
+      },
+      ticks: {
+        precision: 0, // Número de casas decimais exibidas
+        stepSize: 1000, // Incremento entre os valores
+        callback: (value) => {
+          return value.toLocaleString('pt-BR'); // Formato de exibição dos valores (ex: 1.000)
+        }
+      }
+    }
+  },
   plugins: {
     legend: {
       labels: {
-        color: '#fff',
+        color: '#000',
       },
-      display: false,
-      position: 'top',
+      display: true,
+      position: 'bottom',
     },
     datalabels: {
       display: false,
@@ -78,12 +100,32 @@ public pieChartOptionsBar: ChartConfiguration['options'] = {
 
 
 public pieChartDataBar: ChartData<'bar', number[], string | string[]> = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
-    datasets: [ {
-    data: [ 100, 200, 300, 400, 500, 600, 700 ],
-    backgroundColor: ['#4472C4']
-  },]
-}
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    datasets: [
+      {
+        type:  'line',
+        label: 'Realizado',
+        data: [15000, 20000, 15000, 17000, 20000, 15000, 17000, 15000, 20000, 17000, 14500, 20000],
+        borderColor: '#FF8C00',
+        pointStyle: false,
+        pointBackgroundColor: '#FF8C00',	
+        backgroundColor: '#FF8C00',
+        fill: false,        
+        yAxisID: 'shared-axis'
+
+      } as any,
+
+      {
+        type: 'bar',
+        label: 'Previsto',
+        data: [15000, 20000, 10000, 17000, 20000, 15000, 17000, 15000, 20000, 17000, 15000, 20000],
+        backgroundColor: ['#4472C4'],
+        yAxisID: 'shared-axis'
+      },
+
+    ]
+  };
+
 
 
 

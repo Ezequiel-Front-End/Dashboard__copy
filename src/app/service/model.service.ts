@@ -1,6 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Dados } from '../model/dados';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 import { CadastroAAI } from '../interface/cadastro-aai';
 import { CadastroCliente } from '../interface/cadastro-cliente';
 import { CadastroSetor } from '../interface/cadastro-setor';
@@ -48,7 +47,6 @@ export class ModelService {
     let token = localStorage.getItem("token")
     let myheaders = new Headers();
     myheaders.append("Authorization", `Bearer ${token}`);
-    let url = new URLSearchParams();
     myheaders.append("X-stuff-code", "c-fin-asses-01");
     myheaders.append("Content-Type", "application/json");
 
@@ -66,7 +64,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroAAI(x))
-      .catch(error => this.simpleAlert())
+
   }
 
 
@@ -109,16 +107,16 @@ export class ModelService {
 
 
 
-      let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
-      let dados = await api.json()
-      let get = await dados
-      let a = this.ICadastroCliente(get)
-      return a;
-     
-      
-    
-    
-}
+    let api = await fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
+    let dados = await api.json()
+    let get = await dados
+    let a = this.ICadastroCliente(get)
+    return a;
+
+
+
+
+  }
 
 
 
@@ -141,7 +139,8 @@ export class ModelService {
       lista.push(i)
 
     }
-    // console.log(lista);
+     //console.log(lista);
+     
     return lista;
   }
 
@@ -168,7 +167,7 @@ export class ModelService {
     return fetch("http://qas-abctech.ddns.net:8080/jarvis/api/stuff/data/filter-entities", requestOptions)
       .then(resp => resp.json())
       .then(x => this.ICadastroSetor(x))
-      .catch(error => this.simpleAlert())
+      
   }
 
 
@@ -213,7 +212,7 @@ export class ModelService {
 
 
   ICadastroTicker(cadastro: any) {
-    cadastro.forEach((item: any) => {
+    cadastro = cadastro.map((item: any) => {
       let i = new CadastroTicker();
       i.data = {
         setor: {
@@ -227,8 +226,12 @@ export class ModelService {
         empresa: item.data.ipt_00003,
         ticker: item.data.ipt_00002
       };
-      //console.log(i.data);
+      return i
     });
+    //console.log(cadastro.find((element: { data: { ipt_00002: string; }; }) => element.data.ipt_00002 = 'FHER3' ))
+    //console.log(cadastro[0].data.ipt_00002);
+    //console.log(cadastro[0].data.slt_00002.label);
+    return cadastro;
   }
 
 
@@ -256,9 +259,9 @@ export class ModelService {
     let get = await dados
     let a = this.IProcessoRendaVariavel(get);
     return a;
-    
-  
-   
+
+
+
   }
 
   IProcessoRendaVariavel(cadastro: any) {
@@ -336,24 +339,24 @@ export class ModelService {
       lista.push(i)
 
     };
+    //console.log(lista[0]);
 
     return lista
 
-    //return console.log(lista[0].template[0].quantidade);
 
   }
 
 
 
   // tratament de erro 
-  simpleAlert(){
+  simpleAlert() {
     Swal.fire({
       icon: 'error',
-      title: 'Desculpe, servidor indisponível no momento'
+      title: 'Erro ao carregar os dados. Tente novamente.',
     })
   }
 
 }
 
 
-// reduce, some, map, filter, forEach 
+

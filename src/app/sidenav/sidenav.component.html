@@ -23,19 +23,6 @@
                 <span>Jasmine Souza</span>
             </div>
         </li>
-
-        <li class="sistema__de__busca">
-            <div class="search__container">
-                <button class="btn__search"> 
-                    <i class='bx bx-search'></i>
-                </button>
-    
-                <div class="input__search">
-                    <input type="text" placeholder="Buscar Informações">
-                </div>
-            </div>
-           
-        </li>
         
         <li class="side__nav__item" *ngFor="let data of navData">
             <a class="sidenav__nav__link"  [routerLink]="data.routerLink"   routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
